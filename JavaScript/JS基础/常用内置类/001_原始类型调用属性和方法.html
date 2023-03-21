@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let str = 'hello';
+			let num = 1.88;
+
+      // 为什么原始类型可以调用属性和方法？？？
+			console.log(str.length);
+
+			// 原始类型在调用属性和方法时，其内部的操作：会先创建一个临时的包装类的实例，然后在实例上调用属性和方法，最后销毁实例
+      // 临时包装类的实例只在调用属性和方法时存在，调用完毕后就会被销毁
+
+			// 1.创建一个临时的包装类的实例
+			let temp = new String(str);
+			// 2.在实例上调用属性和方法
+			console.log(temp.length); // 5
+			// 3.销毁实例
+			temp = null;
+
+      // 数字类型也是一样的
+			let temp1 = new Number(num);
+			console.log(temp1.toFixed(1)); // 1.9
+			temp1 = null;
+
+
+      // 我们也可以手动创建基本数据类型的实例，但是没有必要
+      let str1 = new String('hello world');
+		</script>
+	</body>
+</html>

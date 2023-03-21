@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="box1" hidden="false" age="18" data-index="1"></div>
+
+		<script>
+			let box1 = document.querySelector(".box1");
+			// 因为attributes是一个类数组（可迭代对象），所以可以使用for...of遍历
+			for (const k of box1.attributes) {
+				console.log(k.name,k.value); // class box1，...
+			}
+		</script>
+	</body>
+</html>
