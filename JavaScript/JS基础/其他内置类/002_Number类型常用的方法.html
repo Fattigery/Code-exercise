@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let num = 11.888;
+
+			// 常用属性
+			// MAX_VALUE：最大值
+			console.log(Number.MAX_VALUE); // 1.7976931348623157e+308
+			// MIN_VALUE：最小值
+			console.log(Number.MIN_VALUE); // 5e-324
+			// POSITIVE_INFINITY：正无穷
+			console.log(Number.POSITIVE_INFINITY); // Infinity
+			// NEGATIVE_INFINITY：负无穷
+			console.log(Number.NEGATIVE_INFINITY); // -Infinity
+
+			// 常用方法
+			// toFixed()：保留小数位数
+			console.log(num.toFixed(1)); // 11.9
+			// parseInt()：将字符串数字转换为整数
+			console.log(parseInt('11.88')); // 11
+			// parseFloat()：将字符串数字转换为浮点数
+			console.log(parseFloat('11.88')); // 11.88
+
+			// 为什么parseInt()可以直接使用？
+			// 因为window.parseInt()和Number.parseInt()的指向是一样的，所以可以直接使用，相当于window.parseInt = Number.parseInt()
+			// 所以可以直接使用parseInt()，也可以使用Number.parseInt()
+			console.log(parseInt === Number.parseInt); // true
+		</script>
+	</body>
+</html>

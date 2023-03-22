@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let str = 'hello world';
+
+			// 1.length属性
+			console.log(str.length); // 11
+
+			// 2.charAt()方法：获取指定位置的字符
+			console.log(str.charAt(4)); // o
+
+			// str.charAt(index)与str[index]获取索引位置字符的区别：
+			// 当获取一个超过字符串length的索引位置字符串时，str.charAt(index)返回空字符串，str[index]返回undefined
+
+			// 3.循环字符串
+			// for
+			for (let i = 0; i < str.length; i++) {
+				console.log(str.charAt(i));
+			}
+
+			// for...of：用于遍历可迭代对象（字符串是可迭代对象）
+			for (let currentStr of str) {
+				console.log(currentStr);
+			}
+
+			// 4.字符串转大小写
+			log(str.toUpperCase()); // HELLO WORLD
+			log(str.toLowerCase()); // hello world
+		</script>
+	</body>
+</html>
