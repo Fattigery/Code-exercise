@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			table.mytable {
+				border-collapse: collapse;
+			}
+			table.mytable td {
+				border: 1px solid #000;
+				padding: 5px 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="mytable"></table>
+
+		<script>
+			let tableEL = document.querySelector('.mytable');
+			// 1.创建一个5行5列的表格
+			for (let i = 1; i <= 5; i++) {
+				let tr = document.createElement('tr');
+				for (let j = 1; j <= 5; j++) {
+					let td = document.createElement('td');
+					td.innerHTML = i + '-' + j;
+					tr.appendChild(td);
+				}
+				tableEL.appendChild(tr);
+			}
+
+			// 2.修改与行号对应的单元格的背景色（比如第一行修改第一个，第二行修改第二个，以此内推）
+			for (let i = 0; i < tableEL.rows.length; i++) {
+				tableEL.rows[i].cells[i].style.backgroundColor = 'red';
+				tableEL.rows[i].cells[i].style.color = 'white';
+			}
+		</script>
+	</body>
+</html>
