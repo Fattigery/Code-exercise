@@ -5,6 +5,88 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<style>
+			table {
+				border-collapse: collapse;
+				text-align: center;
+			}
+
+			td {
+				border: 1px solid #000;
+				padding: 5px 20px;
+			}
+
+			td:hover {
+				background-color: lightcoral;
+			}
+		</style>
 	</head>
-	<body></body>
+	<body>
+		<table class="mytable"></table>
+		<script>
+			let mytable = document.querySelector('.mytable'); // 获取表格
+
+			// 创建thead
+			mytable.createTHead();
+			// 创建tbody
+			mytable.createTBody();
+			// 创建tfoot
+			mytable.createTFoot();
+			// 创建caption
+			mytable.createCaption().innerHTML = '这是表格的标题';
+
+			// 在tbody中创建3行，并在每一行创建三个单元格
+			for (let i = 0; i < 3; i++) {
+				mytable.insertRow();
+			}
+
+			for (let i = 0; i < 3; i++) {
+				for (let j = 0; j < 3; j++) {
+					mytable.querySelector('tbody').rows[i].insertCell();
+				}
+			}
+
+			// 获取thead、tbody、tfoot
+			let thead = mytable.tHead;
+			let tbody = mytable.tBodies[0];
+			let tfoot = mytable.tFoot;
+
+			// 在thead中创建一行
+			thead.insertRow();
+			// 在thead中创建3个单元格
+			for (let i = 0; i < 3; i++) {
+				thead.rows[0].insertCell();
+			}
+
+			// 在tfoot中创建一行
+			tfoot.insertRow();
+			// 在tfoot中创建3个单元格
+			for (let i = 0; i < 3; i++) {
+				tfoot.rows[0].insertCell();
+			}
+
+			// 给thead、tbody、tfoot中的单元格赋值
+			let arr1 = ['姓名', '性别', '年龄'];
+			for (let i = 0; i < 3; i++) {
+				thead.rows[0].cells[i].innerHTML = arr1[i];
+			}
+
+			let arr2 = [
+				{ name: '张三', sex: '男', age: 18 },
+				{ name: '翠花', sex: '女', age: 22 },
+				{ name: '李四', sex: '男', age: 19 }
+			];
+
+			for (let i = 0; i < arr2.length; i++) {
+				for (let j = 0; j < 3; j++) {
+					tbody.rows[i].cells[j].innerHTML = arr2[i][Object.keys(arr2[0])[j]];
+				}
+			}
+
+			let arr3 = ['tfoot1', 'tfoot2', 'tfoot3'];
+			for (let i = 0; i < arr3.length; i++) {
+				tfoot.rows[0].cells[i].innerHTML = arr3[i];
+			}
+		</script>
+	</body>
 </html>
