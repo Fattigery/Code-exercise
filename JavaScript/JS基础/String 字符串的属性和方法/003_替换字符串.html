@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let str = 'hello world';
+
+			// 1. replace() 方法
+			let str2 = str.replace('world', 'javascript');
+			console.log(str2); // hello javascript
+			str2 = str.replace('hello', function (str) {
+				return str.toUpperCase();
+			});
+			console.log(str2); // HELLO world
+
+			// 2. replaceAll() 方法
+			let str3 = str.replaceAll('l', 'L');
+			console.log(str3); // heLLo worLd
+
+			let num = 1;
+			// 每一次匹配到都会回调函数
+			str3 = str.replaceAll('l', function (str) {
+				return num++;
+			});
+			console.log(str3); // he12o wor3d
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 1.substr(startIndex[，length]) 方法
+			// 从startIndex位置开始截取字符串，length为截取的长度，如果不写length，则截取到字符串的末尾
+			// 注意：substr方法即将被”废弃“，最好使用substring方法代替substr
+			let str1 = 'hello world';
+			console.log(str1.substr(0, 5)); // hello
+
+			// 2.substring(startIndex[，endIndex]) 方法
+			// 从startIndex位置开始截取字符串，endIndex为截取的结束位置，但是截取的字符不包括endIndex位置的字符
+			let str2 = 'hello world';
+			console.log(str2.substring(0, 5)); // hello
+
+			// 3.slice(startIndex[，endIndex]) 方法
+			// 用于从字符串中提取一段字符，返回一个新字符串，且不会改动原字符串。
+			// startIndex为开始位置，endIndex为结束位置，提取的新字符串不包括endIndex位置的字符。
+			let str3 = 'hello world';
+			console.log(str3.slice(0, 5)); // hello
+		</script>
+	</body>
+</html>

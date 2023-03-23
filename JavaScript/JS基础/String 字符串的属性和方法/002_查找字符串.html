@@ -6,5 +6,34 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 	</head>
-	<body></body>
+	<body>
+		<script>
+			let message = 'my name is zhangsan';
+
+			// 查找字符串中是否有指定的字符串
+			// 1.indefOf(substr[，index])，返回指定字符串在字符串中的索引位置，如果没有找到，返回-1
+			let index1 = message.indexOf('name');
+			console.log(index1); // 3
+			index1 = message.indexOf('m', 4);
+			console.log(index1); // 5
+
+			// 2.lastIndexOf(substr[，index])，这个方法与indexOf()方法的区别是：从后往前查找
+			let index2 = message.lastIndexOf('name');
+			console.log(index2); // 3
+			index2 = message.lastIndexOf('a');
+			console.log(index2); // 17
+
+			// 3.includes(substr[，index])，返回布尔值，表示是否找到了参数字符串
+			let isInclude = message.includes('name');
+			console.log(isInclude); // true
+
+			// 4.startsWith(substr[，index])，返回布尔值，表示字符串从指定位置开始，是否以指定的字符串开始，不写默认从索引0开始。
+			let isStart = message.startsWith('name', 3);
+			console.log(isStart); // true
+
+			// 5.endsWith(substr[，length])，返回布尔值，表示字符串在length长度内，是否以指定的字符串结束，不写length则默认为字符串的length。
+			let isEnd = message.endsWith('is', 10); // my name is
+			console.log(isEnd); // true
+		</script>
+	</body>
 </html>
