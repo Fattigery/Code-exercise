@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!--
+			Attribute的分类：
+				1.如果是HTML标准制定的属性（Attribute），那么这个属性就是一个标准属性。
+				2.如果是我们自定义的属性，那么这个属性就是一个非标准属性，也叫自定义属性。
+		 -->
+
+		<!--
+			Attribute与property的区别：
+				1.写在HTML标签上的属性叫做Attribute，写在JS对象上的属性叫做property。
+				2.标准Attribute在元素对应的对象模型上都有对应的property。
+				3.非标准Attribute在元素对应的对象模型上没有对应的property。
+		  -->
+
+		<!-- 写在Element标签上的属性叫做Attribute -->
+		<div id="box1" class="box" age="18" data-index="3">123</div>
+
+		<script>
+			// 写在对象上的属性叫做property
+			let obj = {
+				name: '张三',
+				age: 18
+			};
+
+			let box1 = document.querySelector('#box1');
+
+			// 通过元素对象中的property来获取元素的Attribute
+			let id = box1.id;
+			console.log(id); // box1
+			// 获取class比较特殊，需要使用className，这是因为clas在JS中是一个关键字。
+			let className = box1.className;
+			console.log(className); // box
+			// 获取元素的样式对象style，并对其进行操作。
+			box1.style.color = 'red';
+
+			// 因为age是一个非标准属性，没有在元素对象中创建对应的property，所以获取不到。
+			console.log(box1.age); // undefined
+
+			// 获取自定义属性的值，需要使用getAttribute方法。
+			let age = box1.getAttribute('age');
+			console.log(age); // 18
+
+			// 现在h5规定，如果是自定义属性，那么需要使用data-开头，这样我们就可以使用dataset来获取自定义属性的值。
+			let index = box1.dataset.index;
+			console.log(index); // 3
+		</script>
+	</body>
+</html>

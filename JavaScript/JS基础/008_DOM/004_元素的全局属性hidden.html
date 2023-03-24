@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<button>点击</button>
+
+		<script>
+			let box = document.querySelector('.box');
+			let btn = document.querySelector('button');
+			btn.addEventListener('click', () => {
+				// hidden属性是通过设置display:none来实现隐藏的
+				// 每一次将box的hidden属性取反，赋值给box的hidden属性，这样就实现了显示和隐藏的切换
+				box.hidden = !box.hidden;
+			});
+		</script>
+	</body>
+</html>

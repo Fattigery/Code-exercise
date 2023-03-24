@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="box1">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div class="box2"></div>
+		<script>
+			// 先获取body元素
+			let body = document.body;
+
+			// 1.获取body节点下的所有子元素节点 children
+			let children = body.children;
+			console.log(children);
+
+			// 2.检测body元素下的box2是否有子节点
+			let box2 = body.children[0].nextElementSibling;
+			console.log(box2.hasChildNodes()); // false
+		</script>
+	</body>
+</html>
