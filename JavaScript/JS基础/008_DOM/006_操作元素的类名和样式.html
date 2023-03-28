@@ -12,6 +12,8 @@
 		<script>
 			let box = document.querySelector('.box');
 
+			// ----------------------------------------------
+
 			// 1.className操作类名
 			// 注意：因为className其实对应的是元素的class属性，所以直接赋值给className的字符串会替换掉原先的class属性值。
 			// 如果想要保留原先的class属性值，需要在赋值的时候以下两种方式：
@@ -30,11 +32,29 @@
 				5.replace：替换类名
 			*/
 
+			// 移除类名
+			box.classList.remove('box1', 'box2');
+			// 添加类名
+			box.classList.add('a1', 'a2');
+			// 切换类名
+			box.classList.toggle('active');
+			// 检测是否存在某个类名
+			let isClassName = box.classList.contains('a1');
+			console.log(isClassName); // true
+			// 替换类名
+			box.classList.replace('a1', 'n1');
+
+			// ---------------------------------------------------------
+
 			// 使用元素的style样式对象操作样式
 			box.style.color = 'red';
 
-			// cssText操作样式
+			// 使用cssText设置多个样式
 			box.style.cssText = 'color: red; font-size: 20px;';
+
+			// 读取属性值 getComputedStyle(元素对象[, 伪类])
+			let ELstyle = getComputedStyle(box);
+			console.log(ELstyle.fontSize); // 20px
 		</script>
 	</body>
 </html>

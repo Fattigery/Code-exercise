@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 200px;
+				height: 200px;
+				background-color: tan;
+				border: 2px solid #000;
+			}
+
+			.son {
+				width: 100px;
+				height: 100px;
+				background-color: tomato;
+
+				margin: 10px 0 0 20px;
+			}
+
+			.box1 {
+				width: 100px;
+				height: 100px;
+				background-color: tan;
+				border: 2px solid tomato;
+				padding: 10px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="son"></div>
+		</div>
+
+		<div class="box1"></div>
+
+		<!--
+    offset：获取元素的偏移量，包括元素的边框、内边距、外边距、滚动条的宽度
+    slient：获取元素可视区域的尺寸
+    scroll：获取元素内容真实的尺寸（包括滚动的部分）
+   -->
+		<script>
+			let box = document.querySelector('.box');
+			let son = box.querySelector('.son');
+			let box1 = document.querySelector('.box1');
+
+			// -------------------------------------------------------------
+
+			// offset
+
+			// 获取元素最近的祖先元素
+			console.log(son.offsetParent); // body
+
+			// 获取元素的左上角距离offsetParent的左边界和顶部的距离
+			let offsetTop = son.offsetTop;
+			let offsetLeft = son.offsetLeft;
+			console.log(offsetTop, offsetLeft); // 20 30
+			// body默认8像素+box的2像素边框+son距离offsetParent的左边界和顶部的距离（20 30）
+
+			//  获取元素自身的宽高（width/height+padding+border）
+			let offsetWidth = box1.offsetWidth;
+			let offsetHeight = box1.offsetHeight;
+			console.log(offsetWidth, offsetHeight); // 124 124
+
+			// -------------------------------------------------------------
+
+			// client：可视区域
+
+			// 获取元素可视区域的宽高（width/height+padding）
+			let clientWidth = box1.clientWidth;
+			let clientHeight = box1.clientHeight;
+			console.log(clientWidth, clientHeight); // 120 120
+
+			// -------------------------------------------------------------
+
+			// scroll：内容区域
+
+			// element.scrollWidth：获取元素内容的宽度（包括滚动的部分，不包含padding+border）
+			// element.scrollHeight：获取元素内容的高度（包括滚动的部分，不包含padding+border）
+			// element.scrollLeft：获取元素被卷去的宽度（左边被卷去的宽度）
+			// element.scrollTop：获取元素被卷去的高度（上边被卷去的高度）
+		</script>
+	</body>
+</html>
