@@ -30,27 +30,46 @@
 				age: 18
 			};
 
+			// ------------------------------------------------------------------------
+
 			let box1 = document.querySelector('#box1');
 
-			// 通过元素对象中的property来获取元素的Attribute
+			// 通过元素对象中的property来获取元素的Attribute值
 			let id = box1.id;
 			console.log(id); // box1
+
 			// 获取class比较特殊，需要使用className，这是因为clas在JS中是一个关键字。
 			let className = box1.className;
 			console.log(className); // box
+
 			// 获取元素的样式对象style，并对其进行操作。
 			box1.style.color = 'red';
 
-			// 因为age是一个非标准属性，没有在元素对象中创建对应的property，所以获取不到。
+			// 直接获取age是不行的，因为age是一个非标准属性，没有在元素对象中创建对应的property，所以获取不到。
 			console.log(box1.age); // undefined
 
 			// 获取自定义属性的值，需要使用getAttribute方法。
+			// 注意：通过getAttribute获取的属性值都是字符串类型的。
 			let age = box1.getAttribute('age');
 			console.log(age); // 18
 
-			// 现在h5规定，如果是自定义属性，那么需要使用data-开头，这样我们就可以使用dataset来获取自定义属性的值。
+			// 检测是否有某个属性，使用hasAttribute方法。
+			let hasAge = box1.hasAttribute('age');
+			console.log(hasAge); // true
+
+			// 移除某个属性，使用removeAttribute方法。
+			box1.removeAttribute('age');
+			console.log(box1.getAttribute('age')); // null
+
+			// 现在h5规定，如果是自定义属性，需要使用data-开头，这样我们就可以很方便的使用dataset来获取自定义属性的值。
 			let index = box1.dataset.index;
 			console.log(index); // 3
+
+			// 使用attributes属性获取元素所有的Attribute，返回的是一个类数组对象。
+			let box1Attrs = box1.attributes;
+			for (let attr of box1Attrs) {
+				console.log(attr.name, attr.value);
+			}
 		</script>
 	</body>
 </html>

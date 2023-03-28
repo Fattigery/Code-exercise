@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="box">你好啊</div>
+
+		<script>
+			let box = document.querySelector('.box');
+
+			// 1.className操作类名
+			// 注意：因为className其实对应的是元素的class属性，所以直接赋值给className的字符串会替换掉原先的class属性值。
+			// 如果想要保留原先的class属性值，需要在赋值的时候以下两种方式：
+
+			// 将原先的类名添加到字符串中一起进行赋值
+			box.className = 'box box1';
+			// +=的方式
+			box.className += ' box2';
+
+			// classList操作类名
+			/* 有以下几个方法：
+				1.add：添加类名
+				2.remove：移除类名
+				3.toggle：切换类名
+				4.contains：检测是否有某个类名
+				5.replace：替换类名
+			*/
+
+			// 使用元素的style样式对象操作样式
+			box.style.color = 'red';
+
+			// cssText操作样式
+			box.style.cssText = 'color: red; font-size: 20px;';
+		</script>
+	</body>
+</html>

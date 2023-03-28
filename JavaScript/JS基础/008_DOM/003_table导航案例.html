@@ -32,6 +32,10 @@
 			}
 
 			// 2.修改与行号对应的单元格的背景色（比如第一行修改第一个，第二行修改第二个，以此内推）
+			/* 一些方法：
+			rows[index]: 表示获取当前表格中的第几行
+			cells[index]: 表示获取当前行中的第几个单元格
+			*/
 			for (let i = 0; i < tableEL.rows.length; i++) {
 				tableEL.rows[i].cells[i].style.backgroundColor = 'red';
 				tableEL.rows[i].cells[i].style.color = 'white';
