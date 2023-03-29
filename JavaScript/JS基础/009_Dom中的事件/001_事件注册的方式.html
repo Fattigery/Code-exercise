@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button>传统注册方式</button>
+		<button>addEventListener注册事件方式</button>
+
+		<script>
+			let btn1 = document.querySelectorAll('button')[0];
+			let btn2 = document.querySelectorAll('button')[1];
+
+			// 1.传统注册事件的方式（给元素对象中对应的事件属性赋值一个函数）
+			// 局限性：一个事件属性只能对应一个函数，后设置的会覆盖前面设置的
+
+			btn1.onclick = function () {
+				console.log('btn1 点击了按钮_1');
+			};
+
+			// 后面设置的会覆盖前面设置的
+			btn1.onclick = function () {
+				console.log('btn1 点击了按钮_2');
+			};
+
+			// 2.addEventListener注册事件方式（可以给同一个事件注册多个事件处理函数，会按照注册顺序依次执行）
+			btn2.addEventListener('click', () => {
+				console.log('btn2 点击了按钮_1');
+			});
+			btn2.addEventListener('click', () => {
+				console.log('btn2 点击了按钮_2');
+			});
+		</script>
+	</body>
+</html>

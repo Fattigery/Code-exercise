@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 200px;
+				height: 200px;
+				background-color: tan;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<a href="https://www.baidu.com">百度一下</a>
+		<script>
+			let box = document.querySelector('.box');
+
+			document.body.addEventListener('click', () => {
+				console.log('触发了body的点击事件');
+			});
+
+			box.addEventListener('click', e => {
+				console.log('触发了box的点击事件');
+
+				// 阻止事件进一步传递（冒泡/捕获）
+				// 这样就不会触发body的点击事件了
+				e.stopPropagation();
+
+				// 偶尔会使用
+				console.log('事件类型', e.type);
+				console.log('事件阶段', e.eventPhase);
+
+				// 获取位置
+				console.log('鼠标按下位置相对于父元素的位置', e.offsetX, e.offsetY);
+				console.log('鼠标按下位置相对于浏览器可视区域的位置', e.clientX, e.clientY);
+				console.log('鼠标按下位置相对于整个页面(包含滚动区域)的位置', e.pageX, e.pageY);
+				console.log('鼠标按下位置相对于电脑屏幕的位置', e.screenX, e.screenY);
+
+				// target和currentTarget
+				console.log('触发事件的元素', e.target);
+				console.log('绑定事件的元素', e.currentTarget);
+			});
+
+			// 阻止默认行为
+			document.querySelector('a').addEventListener('click', e => {
+				e.preventDefault();
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul>
+			<li>box1</li>
+			<li>box2</li>
+			<li>box3</li>
+			<li>box4</li>
+		</ul>
+
+		<script>
+			let ul = document.querySelector('ul');
+
+			// 场景：点击ul中的li，弹出li的内容
+			// 我们可以直接给4个li循环注册事件，但是这样会有一个问题，就是如果li的数量很多，那么就需要给很多li注册事件，这样就会很麻烦
+			// 所以我们可以直接给ul注册事件，然后通过事件冒泡 + 事件对象.target来获取到点击的li
+			ul.addEventListener('click', e => {
+				// 判断点击的是不是li
+				if (e.target.nodeName === 'LI') {
+					console.log(e.target.innerHTML);
+				}
+			});
+		</script>
+	</body>
+</html>

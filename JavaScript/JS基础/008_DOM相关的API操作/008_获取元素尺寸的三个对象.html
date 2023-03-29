@@ -13,7 +13,7 @@
 				border: 2px solid #000;
 			}
 
-			.son {
+			.box .son {
 				width: 100px;
 				height: 100px;
 				background-color: tomato;
@@ -29,6 +29,21 @@
 				padding: 10px;
 				margin: 10px;
 			}
+
+			.box2 {
+				width: 200px;
+				height: 200px;
+				border: 2px solid #000;
+				overflow: auto;
+			}
+
+			.box2 .viscount {
+				width: 500px;
+				height: 700px;
+				padding: 20px 40px;
+				border: 5px solid red;
+				background-color: teal;
+			}
 		</style>
 	</head>
 	<body>
@@ -38,15 +53,20 @@
 
 		<div class="box1"></div>
 
+		<div class="box2">
+			<div class="viscount">你好啊</div>
+		</div>
+
 		<!--
     offset：获取元素的偏移量，包括元素的边框、内边距、外边距、滚动条的宽度
     slient：获取元素可视区域的尺寸
-    scroll：获取元素内容真实的尺寸（包括滚动的部分）
+    scroll：获取元素“内容”真实的尺寸（包括滚动的部分+padding）
    -->
 		<script>
 			let box = document.querySelector('.box');
 			let son = box.querySelector('.son');
 			let box1 = document.querySelector('.box1');
+			let box2 = document.querySelector('.box2');
 
 			// -------------------------------------------------------------
 
@@ -79,10 +99,18 @@
 
 			// scroll：内容区域
 
-			// element.scrollWidth：获取元素内容的宽度（包括滚动的部分，不包含padding+border）
-			// element.scrollHeight：获取元素内容的高度（包括滚动的部分，不包含padding+border）
-			// element.scrollLeft：获取元素被卷去的宽度（左边被卷去的宽度）
-			// element.scrollTop：获取元素被卷去的高度（上边被卷去的高度）
+			// element.scrollWidth：获取元素“内容”的宽度（包括滚动的部分 + padding，不包含border、margin、滚动条）
+			// element.scrollHeight：获取元素”内容“的高度（包括滚动的部分 + padding，不包含border、margin、滚动条）
+			// element.scrollLeft：读取或设置元素滚动条到元素左边的距离
+			// element.scrollTop：读取或设置元素滚动条到元素顶部的距离
+
+			let scrollWidth = box2.scrollWidth;
+			let scrollHeight = box2.scrollHeight;
+			console.log(scrollWidth, scrollHeight); // 590 750
+
+			box2.scrollLeft = 60;
+			box2.scrollTop = 100;
+			console.log(box2.scrollLeft, box2.scrollTop); // 60 100
 		</script>
 	</body>
 </html>
