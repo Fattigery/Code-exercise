@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// EventTarget可以实现类似于事件总线的效果
+			window.addEventListener('aaa', () => {
+				console.log('aaa事件触发了');
+			});
+
+			// 5秒后派发aaa事件
+			setTimeout(() => {
+				window.dispatchEvent(new Event('aaa'));
+			}, 5000);
+		</script>
+	</body>
+</html>

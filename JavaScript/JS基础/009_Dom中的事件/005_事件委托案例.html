@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.active {
+				background-color: tan;
+				color: tomato;
+			}
+		</style>
+	</head>
+
+	<!-- 案例01 -->
+	<ul>
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+
+	<!-- 案例02 -->
+	<div class="box">
+		<button data-action="search">搜索</button>
+		<button data-action="new">新建</button>
+		<button data-action="remove">移除</button>
+		<button>其他</button>
+	</div>
+
+	<body>
+		<script>
+			// ------------------案例01--------------------------
+			// 点击的li添加active类，其他的li移除active类
+			let ul = document.querySelector('ul');
+
+			// 方式一：选择器找到有active类的li，然后移除active类
+			// ul.onclick = e => {
+			// 	if (e.target.tagName === 'LI') {
+			// 		document.querySelector('.active') && document.querySelector('.active').classList.remove('active');
+			// 		e.target.classList.add('active');
+			// 	}
+			// };
+
+			// 方式二：变量记录的方式
+			// 如果最开始没有元素有active类，则activeEL为null
+			let activeEL = document.querySelector('.active');
+			ul.addEventListener('click', e => {
+				if (e.target.tagName === 'LI') {
+					// 如果activeEL不为null，则移除元素的active类
+					if (activeEL) {
+						activeEL.classList.remove('active');
+					}
+					// 给当前点击的li添加active类
+					e.target.classList.add('active');
+					// 记录当前点击的li
+					activeEL = e.target;
+				}
+			});
+
+			// ------------------案例02--------------------------
+			// 点击按钮，弹出按钮的内容
+			let boxEL = document.querySelector('.box');
+			boxEL.addEventListener('click', e => {
+				if (e.target.tagName === 'BUTTON') {
+					let action = e.target.dataset.action;
+					switch (action) {
+						case 'search':
+							console.log('点击了搜索按钮');
+							break;
+						case 'new':
+							console.log('点击了新建按钮');
+							break;
+						case 'remove':
+							console.log('点击了移除按钮');
+							break;
+						default:
+							console.log('点击了其他按钮');
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
