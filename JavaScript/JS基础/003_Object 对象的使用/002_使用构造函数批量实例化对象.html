@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			/*
+			如果一个函数被new操作符调用，那么这个函数就是一个构造函数：
+			1.构造函数内部首先会创建一个新的空对象。
+			2.然后，构造函数内部的this会指向这个新对象。
+			3.然后，会执行构造函数内部的代码，给这个新对象添加属性和方法。
+			4.最后，如果没有手动return一个对象，那么其内部会自动return这个新对象。
+			*/
+
+			/*
+			注意：
+			1.实例化对象的类型和构造函数的函数名是一样的。
+			*/
+			function NewObj(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+
+			let obj1 = new NewObj('张三', 18);
+			let obj2 = new NewObj('李四', 20);
+			console.log(obj1, obj2);
+		</script>
+	</body>
+</html>

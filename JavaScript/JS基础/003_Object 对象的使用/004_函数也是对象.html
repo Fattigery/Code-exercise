@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 定义对象类型的变量
+			// 地址 - 指针 - 引用
+			let obj = {}; // 会在堆内存开辟一个空间存放，然后将地址赋值给obj
+			let foo = function () {}; // 堆内存
+			function fn() {} // 栈内存
+
+			console.log(typeof obj); // object
+			console.log(typeof fn); // function -> object
+
+			// 函数也是对象
+			function sayHello() {}
+			sayHello.age = 18;
+			console.log(sayHello.age); // 18
+
+			// 构造函数（类）上面添加的函数，称之为静态方法（类方法）
+			function Dog() {}
+			Dog.running = function () {};
+		</script>
+	</body>
+</html>

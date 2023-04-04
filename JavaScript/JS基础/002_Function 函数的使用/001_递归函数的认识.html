@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let num = 0;
+			function bar() {
+				console.log('bar函数被调用了 ' + num + '');
+				num++;
+				if (num == 100) {
+					return;
+				}
+
+				// 递归调用
+				// 如果没有终止条件，会发生无限调用的情况。
+				bar();
+			}
+
+			bar();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 需求：实现一个函数，可以计算任意一个数的阶乘
+			// 方法一：内置运算符 **
+			function pow1(num, n) {
+				return num ** n;
+			}
+			let num1 = pow1(5, 3); // 5*5*5
+			console.log(num1);
+
+			// 方法二：for循环
+			function pow2(num, n) {
+				// num*num*num
+				let result = num;
+				for (let i = 0; i < n - 1; i++) {
+					result *= num;
+				}
+				return result;
+			}
+
+			let num2 = pow2(5, 3);
+			console.log(num2);
+
+			// 方法三：递归（必须有一个结束条件）
+			// 缺点：性能比较低（占用过多的栈内存）
+			// 优点：代码简洁
+			function pow3(num, n) {
+				if (n == 1) {
+					return num;
+				}
+				return num * pow3(num, n - 1);
+			}
+			let num3 = pow3(5, 3); // 5*5*5
+			console.log(num3);
+		</script>
+	</body>
+</html>
