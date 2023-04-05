@@ -5,6 +5,33 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<style>
+			span.txt {
+				display: none;
+			}
+			span.txt:nth-child(4) {
+				display: inline-block;
+			}
+		</style>
 	</head>
-	<body></body>
+	<body>
+		<script>
+			window.addEventListener('load', () => {
+				// 修改4的文本内容
+				let txt4 = document.querySelectorAll('span.txt')[3];
+				txt4.style.display = 'inline-block';
+				txt4.textContent = 'Neutral';
+
+				// 给每个tr行的末尾添加一个td单元格
+				let trs = document.querySelectorAll('table.inner_table tbody tr');
+				trs.forEach((item, index) => {
+					let td = document.createElement('td');
+					td.innerHTML = `
+					<label><input type="checkbox">不确定</label>
+					`;
+					item.append(td);
+				});
+			});
+		</script>
+	</body>
 </html>

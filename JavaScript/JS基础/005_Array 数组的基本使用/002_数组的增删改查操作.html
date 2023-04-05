@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+			// 在数组的尾部添加和删除元素
+			// push()：在数组的尾部添加一或多个元素，并返回数组的长度
+			// pop()：删除数组的最后一个元素，并返回这个元素
+			arr.push(11, 12);
+			arr.pop();
+
+			// 在数组的头部添加和删除元素
+			// unshift()：在数组的头部添加一或多个元素，并返回数组的长度
+			// shift()：删除数组的第一个元素，并返回这个元素
+			arr.unshift(-1, 0);
+			arr.shift();
+			console.log(arr);
+
+			// 在数组的任意位置添加、删除、替换元素
+			// splice(start, deleteCount, item1, item2, ...)
+			// start：从什么位置开始
+			// deleteCount：删除几个元素
+			// item1、item2：添加的元素
+
+			// 删除操作
+			arr.splice(arr.length - 3, 3);
+			console.log(arr);
+
+			// 添加操作
+			arr.splice(arr.length, 0, 'a', 'b', 'c');
+			console.log(arr);
+
+			// 替换操作
+			arr.splice(2, 2, 'item1', 'item2');
+			console.log(arr);
+
+			// 数组的length属性
+			// 数组的length属性是一个动态的值，用来表示数组的长度，它的值会随着数组元素的增删而改变
+			// length属性是可改写的，可以通过修改length属性来控制数组的长度
+		</script>
+	</body>
+</html>
