@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.tip-bar {
+				display: inline-block;
+				padding: 0 10px 0 0;
+				border: 1px solid #000;
+				height: 30px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 16px;
+			}
+			.tip-bar img {
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+
+				vertical-align: middle;
+			}
+
+			.tip-bar span {
+				display: inline-block;
+				color: #fff;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tip-bar">
+			<img src="https://bfs.biyao.com/group1/M01/A2/67/rBACVGA_iOuAYaTxAAAPbted3yE165.png" alt="" />
+			<span>176****7253对这件商品感兴趣</span>
+		</div>
+
+		<script>
+			// 1.假如这是从服务器拿到的数据 ajax/fetch请求
+			let tipList = [
+				{
+					icon: 'https://bfs.biyao.com/group1/M01/A6/97/rBACYWBCHqyAFH5tAAANZXX5Eww646.png',
+					title: 'coderWhy对这件商品感兴趣'
+				},
+				{
+					icon: 'https://bfs.biyao.com/group1/M01/A2/67/rBACVGA_iOuAYaTxAAAPbted3yE165.png',
+					title: '123***814对这件商品感兴趣'
+				},
+				{
+					icon: 'https://bfs.biyao.com/group1/M00/7F/4E/rBACYV16HseAP-PnAAAW9bbVoKE463.png',
+					title: '刘军对这件商品感兴趣'
+				}
+			];
+
+			// 获取元素
+			let img = document.querySelector('.tip-bar img');
+			let span = document.querySelector('.tip-bar span');
+
+			// 每隔2秒切换一次
+			let index = 0;
+			setInterval(() => {
+				img.src = tipList[index].icon;
+				span.innerText = tipList[index].title;
+				// 当index等于tipList的长度时，将index重置为0
+				index + 1 >= tipList.length ? (index = 0) : index++;
+			}, 2000);
+
+			// 有时间的话，可以改成随机数的形式，这样也不用判断index的值了
+		</script>
+	</body>
+</html>

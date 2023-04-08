@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.tip-bar {
+				border: 1px solid #000;
+				display: flex;
+				align-items: center;
+				height: 45px;
+				width: 375px;
+				background-color: black;
+				/* 关键 */
+				overflow: hidden;
+				transition: all 0.5s ease-out;
+			}
+
+			.tip-bar .delete {
+				display: flex;
+				width: 30px;
+				height: 100%;
+				cursor: pointer;
+
+				justify-content: center;
+				align-items: center;
+			}
+
+			.tip-bar .delete img {
+				width: 10px;
+				height: 10px;
+			}
+
+			.tip-bar .logo {
+				width: 30px;
+				height: 30px;
+				margin-left: 5px;
+				cursor: pointer;
+			}
+
+			.tip-bar span {
+				color: white;
+				font-size: 12px;
+				margin-left: 25px;
+
+				/* 占据剩余空间 */
+				flex: 1;
+			}
+
+			.tip-bar .btn {
+				width: 94px;
+				height: 100%;
+				background-color: #f63515;
+				font-size: 14px;
+				color: white;
+				line-height: 45px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tip-bar">
+			<div class="delete">
+				<img src="./img/delete.png" alt="" />
+			</div>
+			<img src="./img/logo.png" alt="" class="logo" />
+			<span>打开京东APP，购物更轻松</span>
+			<div class="btn">立即打开</div>
+		</div>
+
+		<script>
+			// 1.获取元素
+			let myDelete = document.querySelector('.delete');
+
+			// 2.给删除按钮添加点击事件
+			myDelete.addEventListener('click', () => {
+				// 将元素的高度设置为0（有动画）
+				myDelete.parentNode.style.height = 0;
+			});
+
+			// 3.元素的动画结束后，将元素从页面中移除
+			myDelete.parentNode.addEventListener('transitionend', () => {
+				myDelete.parentNode.remove();
+			});
+		</script>
+	</body>
+</html>

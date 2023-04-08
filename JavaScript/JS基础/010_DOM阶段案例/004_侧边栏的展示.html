@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.tip-bar {
+				position: fixed;
+				right: 0;
+				top: 230px;
+			}
+
+			.item {
+				width: 35px;
+				height: 35px;
+
+				position: relative;
+
+				background-color: #7a6e6e;
+				border-radius: 3px 0 0 3px;
+				margin-bottom: 1px;
+			}
+
+			.icon {
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				background-image: url(./img/toolbars.png);
+				cursor: pointer;
+				background-position: -48px 0;
+			}
+
+			.name {
+				position: absolute;
+				z-index: -1;
+				width: 0px;
+				height: 100%;
+
+				top: 0;
+				right: 35px;
+
+				color: white;
+				font-size: 12px;
+				line-height: 35px;
+				text-align: center;
+				background-color: #7a6e6e;
+
+				cursor: pointer;
+				border-radius: 3px 0 0 3px;
+				transition: width 0.3s ease;
+			}
+
+			/* .item:hover .name {
+				width: 62px;
+			} */
+			.item:hover,
+			.item:hover .name {
+				background-color: #cd1926;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tip-bar">
+			<!-- <div class="item">
+				<i class="icon icon01"></i>
+				<div class="name">购物车</div>
+			</div> -->
+		</div>
+
+		<script>
+			let tipBar = document.querySelector('.tip-bar');
+
+			let arr = ['购物车', '收藏', '限时活动', '大礼包'];
+			// 循环创建元素
+			for (let i = 1; i <= 4; i++) {
+				let div = document.createElement('div');
+				div.className = 'item';
+				div.innerHTML = `
+          <i class="icon icon0${i}"></i>
+          <div class="name">${arr[i - 1]}</div>
+        `;
+				tipBar.appendChild(div);
+			}
+
+			// 循环修改i元素使用的背景图片icon的位置
+			let icons = document.querySelectorAll('.icon');
+			for (let i = 0; i < icons.length; i++) {
+				icons[i].style.backgroundPosition = `-48px -${i * 50}px`;
+			}
+
+			// 实现鼠标进入和离开的效果
+			let items = document.querySelectorAll('.item');
+			for (let item of items) {
+				console.log(item.lastElementChild.textContent);
+				// 鼠标进入
+				item.addEventListener('mouseenter', () => {
+					item.lastElementChild.style.width = '62px';
+				});
+				// 鼠标移出
+				item.addEventListener('mouseleave', () => {
+					item.lastElementChild.style.width = '0px';
+				});
+			}
+		</script>
+	</body>
+</html>

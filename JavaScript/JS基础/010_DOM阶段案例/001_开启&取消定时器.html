@@ -9,5 +9,45 @@
 	<body>
 		<button class="open1">openSetTimeout</button>
 		<button class="close1">closeSetTimeout</button>
+		<br />
+		<button class="open2">openSetInterval</button>
+		<button class="close2">closeSetInterval</button>
+
+		<script>
+			let open1 = document.querySelector('.open1');
+			let close1 = document.querySelector('.close1');
+			let open2 = document.querySelector('.open2');
+			let close2 = document.querySelector('.close2');
+
+			// setTimeout
+			function foo(name, age, height) {
+				console.log('foo函数被调用~~', name, age, height);
+			}
+
+			let timeoutID = null;
+			open1.addEventListener('click', () => {
+				console.log('3秒后调用foo函数');
+				timeoutID = setTimeout(foo, 3000, '张三', 18, 1.88);
+			});
+
+			close1.addEventListener('click', () => {
+				console.log('取消setTimeout');
+				clearTimeout(timeoutID);
+			});
+
+			// setInterval
+			let intervalID = null;
+			open2.addEventListener('click', () => {
+				console.log('每隔1秒调用一次setInterval');
+				intervalID = setInterval(() => {
+					console.log('setInterval被调用~~');
+				}, 1000);
+			});
+
+			close2.addEventListener('click', () => {
+				console.log('取消setInterval');
+				clearInterval(intervalID);
+			});
+		</script>
 	</body>
 </html>
