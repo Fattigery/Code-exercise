@@ -11,6 +11,18 @@
 			let num = 0;
 			// -------------------判断是否存在--------------------------
 			// indexOf()、lastIndexOf()、includes()
+			let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+			// 从前往后查找第一个符合条件的元素，找到后会返回该元素的索引，没有找到返回-1
+			num = arr1.indexOf(5); // 4
+			console.log(num);
+
+			// 从后往前查找第一个符合条件的元素，找到后会返回该元素在数组中的索引，没有找到返回-1
+			num = arr1.lastIndexOf(7); // 6
+			console.log(num);
+
+			// 判断数组中是否存在某个元素，返回布尔值
+			let bol = arr1.includes(5); // true
+			console.log(bol);
 
 			// -------------------查找数组元素--------------------------
 			// find()、findIndex
@@ -20,7 +32,13 @@
 				// 会把第一个符合条件的元素返回
 				return item > 5;
 			});
-			console.log(num);
+			console.log(num); // 6
+
+			num = arr2.findIndex((item, index, arr) => {
+				// 会把第一个符合条件的元素的索引返回
+				return item > 5;
+			});
+			console.log(num); // 5
 		</script>
 	</body>
 </html>
