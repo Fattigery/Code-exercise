@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 1.filter 过滤
+			let nums1 = [1, 4, 5, 7, 6, 8];
+			// 将数组中的偶数过滤出来
+			// for循环实现
+			let newNums1a = [];
+			for (let i = 0; i < nums1.length; i++) {
+				if (nums1[i] % 2 == 0) {
+					newNums1a.push(nums1[i]);
+				}
+			}
+			console.log(newNums1a);
+
+			// filter实现
+			let newNums1b = nums1.filter(item => {
+				return item % 2 == 0;
+			});
+			console.log(newNums1b);
+
+			// ------------------------------------------------------
+			// 2.map 映射
+			let nums2 = [2, 4, 6, 8, 10];
+			// 将数组中的每个元素都乘以2
+			// for循环实现
+			let newNums2a = [];
+			for (let i = 0; i < nums2.length; i++) {
+				newNums2a.push(nums2[i] * 2);
+			}
+			console.log(newNums2a);
+
+			// map实现
+			let newNums2b = nums2.map(item => {
+				return item * 2;
+			});
+			console.log(newNums2b);
+
+			// ------------------------------------------------------
+			// 3.reduce 汇总
+			let nums3 = [11, 20, 33, 32, 18];
+			// 求和
+			// for循环实现
+			let result1 = 0;
+			for (let i = 0; i < nums3.length; i++) {
+				result1 += nums3[i];
+			}
+			console.log(result1);
+
+			// reduce实现
+			let result2 = nums3.reduce((prev, item) => {
+				return prev + item;
+			}, 0);
+			/*
+      第一次执行，prev为初始值0，item为11，返回11
+      第二次执行，prev为11，item为20，返回31
+      第三次执行，prev为31，item为33，返回64
+      第四次执行，prev为64，item为32，返回96
+      第五次执行，prev为96，item为18，返回114（最后一次执行，会作为reduce的返回值）
+      */
+			console.log(result2); // 114
+
+			// reduce练习，计算总价格
+			var products = [
+				{ name: '鼠标', price: 88, count: 3 },
+				{ name: '键盘', price: 200, count: 2 },
+				{ name: '耳机', price: 9.9, count: 10 }
+			];
+			let totalPrice = products.reduce((prevValue, item) => {
+				return prevValue + item.price * item.count;
+			}, 0);
+			/*
+      第一次执行：prevValue为0，item为88*3，返回264
+      第二次执行：prevValue为264，item为200*2，返回664
+      第三次执行：prevValue为664，item为9.9*10，返会763（最后一次执行，会作为reduce的返回值）
+      */
+			console.log(totalPrice); // 763
+
+			//  ------------------------------------------------------
+			// 综合练习
+			var nums = [11, 20, 55, 100, 88, 32];
+
+			// 过滤所有的偶数, 映射所有偶数的平方, 并且计算他们的和
+			let totalNums = nums
+				.filter(item => {
+					return item % 2 == 0;
+				})
+				.map(item => {
+					return item * 2;
+				})
+				.reduce((prev, item) => {
+					return prev + item;
+				}, 0);
+			console.log(totalNums); // 480
+		</script>
+	</body>
+</html>

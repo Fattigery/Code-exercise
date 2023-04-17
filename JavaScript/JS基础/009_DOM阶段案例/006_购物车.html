@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 20px;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			table th {
+				background-color: #f5f5f5;
+			}
+			table th,
+			table td {
+				border: 1px solid #999;
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>书籍名称</th>
+					<th>出版日期</th>
+					<th>结果</th>
+					<th>购买数量</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<h2>总价格：<span class="totalPrice">1234</span></h2>
+
+		<script>
+			var books = [
+				{
+					id: 1,
+					name: '《算法导论》',
+					date: '2006-09',
+					price: 85.0,
+					count: 3
+				},
+				{
+					id: 2,
+					name: '《UNIX编程艺术》',
+					date: '2006-02',
+					price: 59.0,
+					count: 2
+				},
+				{
+					id: 3,
+					name: '《编程珠玑》',
+					date: '2008-10',
+					price: 39.0,
+					count: 5
+				},
+				{
+					id: 4,
+					name: '《代码大全》',
+					date: '2006-03',
+					price: 128.0,
+					count: 8
+				}
+			];
+
+			// 1.获取元素
+			let tbody = document.querySelector('table').tBodies[0];
+
+			// 2.渲染数据
+			for (let i = 0; i < books.length; i++) {
+				let tr = document.createElement('tr');
+				let currentBook = books[i];
+				tr.innerHTML = `
+			          <td>${currentBook.id}</td>
+						    <td>${currentBook.name}</td>
+						    <td>${currentBook.date}</td>
+						    <td>￥${currentBook.price}</td>
+						    <td>
+							    <button>-</button>
+							    <span class="num">${currentBook.count}</span>
+							    <button>+</button>
+						    </td>
+						    <td>
+							    <button>删除</button>
+						    </td>
+			      `;
+				tbody.append(tr);
+			}
+
+			// 3.计算总价格
+			let totalPriceEL = document.querySelector('.totalPrice');
+			function totalPrice() {
+				let totalPrice = books.reduce((prev, item) => {
+					return prev + item.price * item.count;
+				}, 0);
+				totalPriceEL.innerHTML = totalPrice;
+			}
+			totalPrice();
+
+			// 4.实现加减功能
+			let trs = tbody.querySelectorAll('tr');
+
+			for (let i = 0; i < trs.length; i++) {
+				let trIndex = 0;
+
+				let currentRowBtns = trs[i].querySelectorAll('button');
+
+				// 删除功能
+				currentRowBtns[2].addEventListener('click', function () {
+					trIndex = this.parentNode.parentNode.sectionRowIndex;
+					tbody.deleteRow(trIndex);
+					books.splice(trIndex, 1);
+					console.log(trIndex, books);
+					totalPrice();
+				});
+
+				currentRowBtns[0].addEventListener('click', function () {
+					trIndex = this.parentNode.parentNode.sectionRowIndex;
+					books[trIndex].count = --books[trIndex].count <= 0 ? 0 : books[trIndex].count;
+					trs[trIndex].querySelector('.num').innerHTML = books[trIndex].count;
+					totalPrice();
+				});
+
+				currentRowBtns[1].addEventListener('click', function () {
+					trIndex = this.parentNode.parentNode.sectionRowIndex;
+					books[trIndex].count += 1;
+					trs[trIndex].querySelector('.num').innerHTML = books[trIndex].count;
+					totalPrice();
+				});
+			}
+		</script>
+	</body>
+</html>

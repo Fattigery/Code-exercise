@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let arr = [
+				{
+					id: 101,
+					name: '张三',
+					age: 18,
+					sex: '男'
+				},
+				{
+					id: 102,
+					name: '李四',
+					age: 20,
+					sex: '男'
+				},
+				{
+					id: 103,
+					name: '王五',
+					age: 22,
+					sex: '男'
+				},
+				{
+					id: 104,
+					name: '翠花',
+					age: 19,
+					sex: '女'
+				}
+			];
+
+			// find() 方法返回数组中满足提供的条件的第一个元素的值。否则返回undefined
+			let a = arr.find((item, index, arr) => {
+				return item.id == 101;
+			});
+
+			console.log(a);
+
+			// 手动实现一个find()方法
+			Array.prototype.myFind = function (callback) {
+				let idTrue = null;
+				for (let i = 0; i < this.length; i++) {
+					// 每次得到一个返回的结果
+					isTrue = callback(this[i], i, this);
+					// 如果返回的结果为true，就返回当前的元素
+					if (isTrue) {
+						return this[i];
+					}
+				}
+				// 如果循环完成了，还没找到符合条件的元素，就返回undefined
+				// 函数默认返回undefined，所以可以不写
+				// return undefined;
+			};
+
+			let b = arr.myFind((item, index, arr) => {
+				return item.id == 103;
+			});
+
+			console.log(b);
+		</script>
+	</body>
+</html>

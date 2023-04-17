@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			/*
+			forEach()接收一个函数，对数组的每个元素执行这个函数
+			回调函数接收三个参数，分别是当前元素，当前索引，数组本身
+			接下来，我们来手动实现一个forEach()函数
+			*/
+
+			let arr = [
+				{
+					id: 101,
+					name: '张三',
+					age: 18,
+					sex: '男'
+				},
+				{
+					id: 102,
+					name: '李四',
+					age: 20,
+					sex: '男'
+				},
+				{
+					id: 103,
+					name: '王五',
+					age: 22,
+					sex: '男'
+				},
+				{
+					id: 104,
+					name: '翠花',
+					age: 19,
+					sex: '女'
+				}
+			];
+
+			// 系统内置的forEach()方法
+			// arr.forEach((item, index, arr) => {
+			// 	console.log(item, index, arr);
+			// });
+
+			// 手动实现一个forEach()方法
+			// 在原型上添加一个方法，这样所有的数组都可以使用这个方法，其内部的this指向调用这个方法的数组
+			Array.prototype.myForEach = function (callback) {
+				// item，index，arr
+
+				for (let i = 0; i < this.length; i++) {
+					callback(this[i], i, this);
+				}
+			};
+
+			arr.myForEach((item, index, arr) => {
+				if (item.id == 101) {
+					console.log(item, index, arr);
+				}
+			});
+		</script>
+	</body>
+</html>
