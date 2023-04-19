@@ -109,32 +109,39 @@
 			// 4.实现加减功能
 			let trs = tbody.querySelectorAll('tr');
 
-			for (let i = 0; i < trs.length; i++) {
-				let trIndex = 0;
+			function addAndreduceAndRemove(index, id) {
+				trs = tbody.querySelectorAll('tr');
+				let numEL = trs[index].querySelector('.num');
+				if (id == 1) {
+					console.log(index);
+					books[index].count = --books[index].count <= 0 ? 0 : books[index].count;
+					numEL.textContent = books[index].count;
+				} else if (id == 2) {
+					books[index].conut = ++books[index].count;
+					numEL.textContent = books[index].count;
+				} else if (id == 3) {
+					books.splice(index, 1);
+					trs[index].remove();
+				}
+				totalPrice();
+			}
 
+			for (let i = 0; i < trs.length; i++) {
 				let currentRowBtns = trs[i].querySelectorAll('button');
+
+				// 减少功能
+				currentRowBtns[0].addEventListener('click', function () {
+					addAndreduceAndRemove(this.parentNode.parentNode.sectionRowIndex, 1);
+				});
+
+				// 增加功能
+				currentRowBtns[1].addEventListener('click', function () {
+					addAndreduceAndRemove(this.parentNode.parentNode.sectionRowIndex, 2);
+				});
 
 				// 删除功能
 				currentRowBtns[2].addEventListener('click', function () {
-					trIndex = this.parentNode.parentNode.sectionRowIndex;
-					tbody.deleteRow(trIndex);
-					books.splice(trIndex, 1);
-					console.log(trIndex, books);
-					totalPrice();
-				});
-
-				currentRowBtns[0].addEventListener('click', function () {
-					trIndex = this.parentNode.parentNode.sectionRowIndex;
-					books[trIndex].count = --books[trIndex].count <= 0 ? 0 : books[trIndex].count;
-					trs[trIndex].querySelector('.num').innerHTML = books[trIndex].count;
-					totalPrice();
-				});
-
-				currentRowBtns[1].addEventListener('click', function () {
-					trIndex = this.parentNode.parentNode.sectionRowIndex;
-					books[trIndex].count += 1;
-					trs[trIndex].querySelector('.num').innerHTML = books[trIndex].count;
-					totalPrice();
+					addAndreduceAndRemove(this.parentNode.parentNode.sectionRowIndex, 3);
 				});
 			}
 		</script>
