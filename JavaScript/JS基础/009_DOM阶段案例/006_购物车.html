@@ -96,7 +96,7 @@
 				tbody.append(tr);
 			}
 
-			// 3.计算总价格
+			// 3.计算总价格，将其封装为函数
 			let totalPriceEL = document.querySelector('.totalPrice');
 			function totalPrice() {
 				let totalPrice = books.reduce((prev, item) => {
@@ -106,15 +106,24 @@
 			}
 			totalPrice();
 
-			// 4.实现加减功能
+			// 4.实现加、减、删除功能
+			// 4.1 获取所有的tr
 			let trs = tbody.querySelectorAll('tr');
 
+			// 4.3 封装一个函数，用来实现加、减、删除功能
+			// index:当前点击的按钮是哪个tr行的索引
+			// id:当前点击的按钮的代号
 			function addAndreduceAndRemove(index, id) {
+				// 获取最新的所有的tr
 				trs = tbody.querySelectorAll('tr');
+				// 获取当前tr行要购买的书籍数量
 				let numEL = trs[index].querySelector('.num');
+				// 判断当前点击的按钮
 				if (id == 1) {
 					console.log(index);
+					// 更新books中的数据
 					books[index].count = --books[index].count <= 0 ? 0 : books[index].count;
+					// 然后再更新页面中的数据
 					numEL.textContent = books[index].count;
 				} else if (id == 2) {
 					books[index].conut = ++books[index].count;
@@ -123,23 +132,27 @@
 					books.splice(index, 1);
 					trs[index].remove();
 				}
+				// 重新计算总价格
 				totalPrice();
 			}
 
+			// 4.2 循环所有的tr，给每个tr中的按钮绑定事件
 			for (let i = 0; i < trs.length; i++) {
+				// 获取当前tr行的三个按钮
 				let currentRowBtns = trs[i].querySelectorAll('button');
 
-				// 减少功能
+				// 点击的是减少按钮
 				currentRowBtns[0].addEventListener('click', function () {
+					// 调用函数将当前点击的按钮是哪个tr行的索引和按钮的代号传递过去
 					addAndreduceAndRemove(this.parentNode.parentNode.sectionRowIndex, 1);
 				});
 
-				// 增加功能
+				// 点击的是增加按钮
 				currentRowBtns[1].addEventListener('click', function () {
 					addAndreduceAndRemove(this.parentNode.parentNode.sectionRowIndex, 2);
 				});
 
-				// 删除功能
+				// 点击的是删除按钮
 				currentRowBtns[2].addEventListener('click', function () {
 					addAndreduceAndRemove(this.parentNode.parentNode.sectionRowIndex, 3);
 				});

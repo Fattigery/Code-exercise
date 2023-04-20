@@ -5,6 +5,112 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="stylesheet" href="./css/reset.css" />
+
+		<style>
+			.main_wrapper {
+				width: 604px;
+				margin: 20px auto;
+			}
+
+			.main .news-section {
+				height: 342px;
+			}
+
+			.main .news-section .banner {
+				width: 604px;
+				background-color: black;
+				overflow: hidden;
+			}
+
+			.main .news-section .banner .image-list {
+				display: flex;
+			}
+
+			.main .news-section .banner .title-list {
+				display: flex;
+				height: 44px;
+				line-height: 44px;
+			}
+
+			.main .news-section .banner .title-list .item {
+				flex: 1;
+				text-align: center;
+			}
+
+			.main .news-section .banner .title-list .item a {
+				display: block;
+				font-size: 14px;
+				color: #b1b2be;
+			}
+
+			.main .news-section .banner .title-list .item a:hover,
+			.main .news-section .banner .title-list .item.active a {
+				color: #f3c258;
+				background-color: rgba(255, 255, 255, 0.15);
+			}
+		</style>
 	</head>
-	<body></body>
+	<body>
+		<div class="main main_wrapper">
+			<div class="news-section">
+				<div class="banner">
+					<ul class="image-list"></ul>
+					<ul class="title-list"></ul>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			let imgs = [
+				'./img/banner_01.jpeg',
+				'./img/banner_02.jpeg',
+				'./img/banner_03.jpeg',
+				'./img/banner_04.jpeg',
+				'./img/banner_05.jpeg'
+			];
+			let titles = ['桑启的旅途故事', '启示之音抢先听', '谁成为版本之子', '观赛体验升级', '季后赛开战'];
+
+			// 1.根据数据动态创建元素
+			let imageListEL = document.querySelector('.image-list');
+			let titleListEL = document.querySelector('.title-list');
+			for (let i = 0; i < imgs.length; i++) {
+				// 创建图片li
+				let imgLiEL = document.createElement('li');
+				imgLiEL.className = 'item';
+				imgLiEL.innerHTML = `
+				<a href="">
+					<img src="${imgs[i]}" alt="${titles[i]}" />
+				</a>
+				`;
+				imageListEL.append(imgLiEL);
+
+				// 创建title li
+				let titleLiEL = document.createElement('li');
+				titleLiEL.className = 'item';
+				titleLiEL.innerHTML = `
+				<a href="#">${titles[i]}</a>
+				`;
+				titleListEL.append(titleLiEL);
+			}
+
+			// 默认给第一个titleLi添加active类名
+			document.querySelector('.title-list .item:nth-child(1)').classList.add('active');
+
+			// 底部titles的切换，并且图片也要跟着切换
+			titleListEL.addEventListener('mouseover', e => {
+				let currentTitleEl = e.target.parentElement;
+				// 清除先前的active类名
+				document.querySelector('.active')?.classList.remove('active');
+				// 给当前的titleLi添加active类名
+				currentTitleEl.classList.add('active');
+				// 记录当前titleLi的索引
+				let index = [...currentTitleEl.parentElement.children].indexOf(currentTitleEl);
+
+				// 让图片跟着切换
+				imageListEL.style.transition = 'all .3s ease-in-out';
+				imageListEL.style.transform = `translateX(${-index * 604}px)`;
+			});
+		</script>
+	</body>
 </html>
