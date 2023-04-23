@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let user = {
+				name: 'John',
+				age: {
+					name: '年龄',
+					value: 18,
+					toJSON() {
+						return this.value;
+					}
+				},
+				aaa: {
+					toJSON() {
+						return 'wo shi aaa';
+					}
+				},
+				arr: [1, 2, 3]
+			};
+
+			// JS对象的序列化
+			let jsonObj = JSON.stringify(user, (key, value) => {
+				// 当key为name时，返回张三
+				if (key == 'name') {
+					return '张三';
+				}
+				// 其他的情况，返回原来的值
+				return value;
+			});
+
+			console.log(jsonObj);
+
+			// JSON对象的反序列化
+			let obj = JSON.parse(jsonObj, (key, value) => {
+				// 在反序列化时，对name属性进行处理
+				if (key == 'name') {
+					return '李四';
+				}
+				return value;
+			});
+			console.log(obj);
+		</script>
+	</body>
+</html>

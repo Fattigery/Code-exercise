@@ -25,6 +25,14 @@
 
 			.main .news-section .banner .image-list {
 				display: flex;
+				position: relative;
+				width: 604px;
+				height: 298px;
+			}
+			.main .news-section .banner .image-list .item {
+				position: absolute;
+				left: 100%;
+				transition: left 0.3s ease-in-out;
 			}
 
 			.main .news-section .banner .title-list {
@@ -71,7 +79,7 @@
 			];
 			let titles = ['桑启的旅途故事', '启示之音抢先听', '谁成为版本之子', '观赛体验升级', '季后赛开战'];
 
-			// 1.根据数据动态创建元素
+			// 根据数据动态创建元素
 			let imageListEL = document.querySelector('.image-list');
 			let titleListEL = document.querySelector('.title-list');
 			for (let i = 0; i < imgs.length; i++) {
@@ -94,23 +102,63 @@
 				titleListEL.append(titleLiEL);
 			}
 
+			// 保存当前titleLi的索引
+			let index = 0;
+			// 保存定时器的返回值id
+			let timer = null;
+
 			// 默认给第一个titleLi添加active类名
 			document.querySelector('.title-list .item:nth-child(1)').classList.add('active');
+			// 默认让第一张图片显示
+			document.querySelector('.image-list .item:nth-child(1)').style.left = 0;
 
 			// 底部titles的切换，并且图片也要跟着切换
 			titleListEL.addEventListener('mouseover', e => {
 				let currentTitleEl = e.target.parentElement;
+
+				// 记录当前titleLi的索引
+				index = [...currentTitleEl.parentElement.children].indexOf(currentTitleEl);
+				switchBanner();
+			});
+
+			// 定时器自动切换
+			autoSwitch();
+
+			// 当鼠标移入banner区域时，停止自动切换，移出时继续自动切换
+			let bannerEL = document.querySelector('.banner');
+			bannerEL.onmouseenter = () => {
+				clearInterval(timer);
+			};
+			bannerEL.onmouseleave = () => {
+				autoSwitch();
+			};
+
+			// 将切换功能封装为函数
+			function switchBanner() {
 				// 清除先前的active类名
 				document.querySelector('.active')?.classList.remove('active');
 				// 给当前的titleLi添加active类名
-				currentTitleEl.classList.add('active');
-				// 记录当前titleLi的索引
-				let index = [...currentTitleEl.parentElement.children].indexOf(currentTitleEl);
-
+				titleListEL.children[index].classList.add('active');
 				// 让图片跟着切换
-				imageListEL.style.transition = 'all .3s ease-in-out';
-				imageListEL.style.transform = `translateX(${-index * 604}px)`;
-			});
+				for (let i = 0; i < titleListEL.children.length; i++) {
+					if (i == index) {
+						imageListEL.children[i].style.left = 0;
+					} else if (i < index) {
+						imageListEL.children[i].style.left = -100 + '%';
+					} else if (i > index) {
+						imageListEL.children[i].style.left = 100 + '%';
+					}
+				}
+			}
+
+			// 将自动切换定时器封装为函数
+			function autoSwitch() {
+				timer = setInterval(() => {
+					index = ++index >= titleListEL.children.length ? 0 : index;
+
+					switchBanner();
+				}, 2000);
+			}
 		</script>
 	</body>
 </html>
