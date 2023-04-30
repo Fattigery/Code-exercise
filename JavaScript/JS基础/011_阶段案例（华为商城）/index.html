@@ -5,6 +5,31 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="stylesheet" href="./css/reset.css" />
+		<link rel="stylesheet" href="./css/common.css" />
+		<style>
+			.crumbs {
+				height: 63px;
+				line-height: 63px;
+				font-size: 12px;
+			}
+
+			.crumbs .item {
+				cursor: pointer;
+			}
+
+			.crumbs .item:last-child {
+				color: #000;
+			}
+		</style>
 	</head>
-	<body></body>
+	<body>
+		<div class="wrapper">
+			<div class="crumbs">
+				<span class="item">首页</span>
+				<span>&gt;</span>
+				<span class="item">笔记本</span>
+			</div>
+		</div>
+	</body>
 </html>
