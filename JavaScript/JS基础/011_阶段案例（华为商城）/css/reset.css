@@ -1,5 +1,4 @@
 /* 清楚默认样式 */
-
 body,
 ul,
 li {
@@ -14,6 +13,7 @@ li {
 
 a {
 	text-decoration: none;
+	color: #333;
 }
 
 img {

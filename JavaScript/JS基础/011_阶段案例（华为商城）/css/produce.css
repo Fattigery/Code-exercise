@@ -1,0 +1,126 @@
+/* 商品展示部分的CSS */
+/* 面包屑部分 */
+.crumbs {
+	height: 63px;
+	line-height: 63px;
+	font-size: 12px;
+}
+
+.crumbs .item {
+	cursor: pointer;
+}
+
+.crumbs .item:last-child {
+	color: #000;
+}
+
+/* 分类部分 */
+.operation {
+	padding: 10px 24px;
+	background-color: #fff;
+	font-size: 12px;
+}
+
+.operation > .row {
+	display: flex;
+	height: 48px;
+	line-height: 48px;
+}
+
+.operation > .row > li {
+	width: 104px;
+}
+
+.operation > .row > li:first-child {
+	color: #666;
+}
+
+.operation > .row > li:not(:first-child) {
+	cursor: pointer;
+}
+
+.operation > .row > li.active {
+	color: red;
+}
+
+/* 商品部分 */
+.products {
+	margin-top: 12px;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	justify-content: space-between;
+}
+
+.products .item {
+	width: 291px;
+	background-color: #fff;
+	margin-bottom: 12px;
+
+	transition: all 0.3s;
+}
+
+/* 对最后一行添加的占位item，设置高度为0 */
+.products .item.empty {
+	height: 0;
+}
+
+.products .item:hover {
+	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+	transform: scale(1.02);
+}
+
+.products .item a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.products .item a img.album {
+	width: 180px;
+	height: 180px;
+	margin: 30px 0;
+}
+
+.products .item a .name {
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+
+.products .item a .discount {
+	height: 17px;
+	font-size: 12px;
+	color: #666;
+	margin-bottom: 10px;
+}
+
+.products .item a .price {
+	color: red;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.products .item a .service {
+	display: flex;
+	justify-content: center;
+	margin: 10px 0;
+}
+
+.products .item a .service .tip {
+	font-size: 12px;
+	color: red;
+	border: 1px solid red;
+	padding: 0 3px;
+	margin: 0 3px;
+	border-radius: 3px;
+}
+
+.products .item a .comment {
+	margin-bottom: 12px;
+}
+
+.products .item a .comment span {
+	font-size: 12px;
+	color: #666;
+	margin: 0 5px;
+}
