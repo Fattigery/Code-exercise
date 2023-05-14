@@ -10,7 +10,7 @@ let discountFilters = [];
 // 初始化页面：动态展示商品列表
 showResultList(filterResultList());
 
-// 循环遍历服务优惠的li，注册点击事件
+// 循环遍历“服务优惠”的li，注册点击事件
 for (let i = 1; i < discountElChildrens.length; i++) {
 	discountElChildrens[i].onclick = function () {
 		// 选中状态的切换
@@ -24,7 +24,27 @@ for (let i = 1; i < discountElChildrens.length; i++) {
 			}
 		}
 		// 每次点击，筛选出符合条件的商品并展示
-		showResultList(filterResultList());
+		// showResultList(filterResultList());
+
+		// 每次点击，筛选出符合条件的商品，然后根据处于active状态的排序方式，对数据进行排序
+		sortResultListActive(document.querySelector('.sort .active').dataset.key);
+	};
+}
+
+// 循环遍历“排序”的li，注册点击事件
+let sortEl = document.querySelector('.sort');
+for (let i = 1; i < sortEl.children.length; i++) {
+	let sortItemEl = sortEl.children[i];
+	sortItemEl.onclick = function () {
+		// 切换选中状态
+		document.querySelector('.sort .active').classList.remove('active');
+		this.classList.add('active');
+
+		// 获取当前点击的排序方式
+		let sortKey = this.dataset.key;
+
+		// 根据key，对数据进行排序
+		sortResultListActive(sortKey);
 	};
 }
 
@@ -36,10 +56,10 @@ function filterResultList() {
 		// 初始化isFlage为true
 		let isFlage = true;
 		/*
-          将我们选中的服务优惠和本次循环的商品的服务优惠进行比较
-            1.如果我们没有选择服务优惠，则length为0，就不会进入循环，每次isFlage都为true
-            2.如果我们选择了服务优惠，则我们选中的服务优惠需要在本次循环的商品的服务优惠中都存在，才返回true，如果有一个不存在，则返回false
-          */
+    将我们选中的服务优惠和本次循环的商品的服务优惠进行比较
+      1.如果我们没有选择服务优惠，则length为0，就不会进入循环，每次isFlage都为true
+      2.如果我们选择了服务优惠，则我们选中的服务优惠需要在本次循环的商品的服务优惠中都存在，才返回true，如果有一个不存在，则返回false
+    */
 		// console.log(currentServices);
 		for (let i = 0; i < discountFilters.length; i++) {
 			if (!currentServices.includes(discountFilters[i])) {
@@ -89,4 +109,9 @@ function showResultList(filterResultList) {
 	}
 	// 添加空的item，解决flex布局最后一行不足4个item的时候，布局不理想的问题
 	addProductsEmptyItem();
+}
+
+// 封装函数：根据key，对数据进行排序
+function sortResultListActive(key) {
+	showResultList(filterResultList().sort((a, b) => b[key] - a[key]));
 }

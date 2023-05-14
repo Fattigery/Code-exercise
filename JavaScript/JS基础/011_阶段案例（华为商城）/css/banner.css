@@ -1,23 +1,22 @@
 /* 轮播图 */
 .banner {
+	max-width: 1920px;
+	margin: 0 auto;
 	position: relative;
+
+	overflow: hidden;
 }
 
 .banner .images {
-	position: relative;
+	display: flex;
+	width: 100%;
 	height: 550px;
+
+	/* transition: all 0.3s; */
 }
 
 .banner .images .item {
-	overflow: hidden;
-
-	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
-
-	opacity: 0;
-	transition: opacity 0.3s;
 }
 
 .banner .images .item.active {
@@ -25,12 +24,7 @@
 }
 
 .banner .images .item img {
-	width: 1920px;
 	height: 550px;
-
-	position: relative;
-	transform: translate(-50%);
-	left: 50%;
 }
 
 /* 左右按钮 */
