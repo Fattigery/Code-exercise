@@ -1,0 +1,164 @@
+@import url(./variables.less);
+@import url(./mixins.less);
+
+.home {
+	// 打开APP
+	.download {
+		// 在750px的设计稿中，16vw = 120px，转成375px的设计稿时，16vw = 60px
+		height: 16vw;
+		border-bottom: 1px solid #ddd;
+		background-color: white;
+		box-sizing: border-box;
+
+		display: flex;
+
+		.left {
+			flex: 1;
+			// 为了使文本超出折叠生效01
+			overflow: hidden;
+
+			display: flex;
+			align-items: center;
+			padding: 2.133333vw;
+
+			img {
+				width: 10.666667vw;
+				height: 10.666667vw;
+				box-shadow: 0 0 1.066667vw 0 rgba(0, 0, 0, 0.15);
+				border-radius: 2.666667vw;
+			}
+
+			.info {
+				margin-left: 2.133333vw;
+				// 为了使文本超出折叠生效02
+				flex: 1;
+				overflow: hidden;
+
+				.title {
+					font-size: @normalFontSize;
+					.text_ellipsis();
+				}
+
+				.desc {
+					font-size: @smallFontSize;
+					color: #ccc;
+
+					.text_ellipsis();
+				}
+			}
+		}
+
+		.right {
+			width: 25.2vw;
+			height: 16vw;
+			font-size: @bigFontSize;
+
+			background-image: linear-gradient(to right, #ff0409, #ff3162);
+			color: white;
+			text-align: center;
+			line-height: 16vw;
+		}
+	}
+
+	// 补贴
+	.subsidy {
+		width: 93.6vw;
+		height: 44vw;
+		margin: 12px auto;
+		box-sizing: border-box;
+		padding: 0 2.666667vw;
+		border-radius: 3.2vw;
+		background-color: white;
+
+		.header {
+			height: 10.666667vw;
+
+			display: flex;
+			align-items: center;
+
+			.left {
+				flex: 1;
+
+				display: flex;
+				align-items: flex-end;
+
+				img {
+					width: 16.8vw;
+				}
+
+				.time {
+					font-size: @smallFontSize;
+					margin-left: 1.333333vw;
+
+					display: flex;
+
+					.item {
+						width: 5.333333vw;
+						height: 4.266667vw;
+						text-align: center;
+						line-height: 4.266667vw;
+						background-color: @mainColor;
+						color: white;
+						border-radius: 0.8vw;
+					}
+
+					.split {
+						color: @mainColor;
+						margin: 0 0.8vw;
+					}
+				}
+			}
+
+			.right {
+				color: @mainColor;
+				font-size: @smallFontSize;
+
+				position: relative;
+				padding-right: 2.133333vw;
+
+				&::after {
+					content: '';
+					position: absolute;
+					width: 1.2vw;
+					height: 1.2vw;
+					border: 0.266667vw solid @mainColor;
+					border-top-color: transparent;
+					border-left-color: transparent;
+					transform: rotate(-45deg);
+
+					top: 1.6vw;
+				}
+			}
+		}
+
+		.list {
+			display: flex;
+
+			.item {
+				flex: 1;
+				text-align: center;
+
+				img {
+					width: 20.933333vw;
+				}
+
+				.info {
+					.new {
+						color: @mainColor;
+						font-size: @normalFontSize;
+						span {
+							font-weight: bold;
+							font-size: @bigFontSize;
+						}
+					}
+
+					.old {
+						color: #ccc;
+						font-size: @smallFontSize;
+						text-decoration: line-through;
+					}
+				}
+			}
+		}
+	}
+}
