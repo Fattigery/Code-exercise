@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- {{}}：插值语法 -->
+			<h2>{{ title }}</h2>
+			<h2>电影列表</h2>
+			<ul>
+				<!--
+          items：数据源
+          item：遍历的每一项
+         -->
+				<li v-for="item in items">{{item}}</li>
+			</ul>
+
+			<!-- 计数器功能 -->
+			<div class="counter">
+				<h2>当前计数：{{number}}</h2>
+				<button v-on:click="decrement">-1</button>
+				<button @click="increment">+1</button>
+			</div>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			Vue.createApp({
+				// data必须是一个函数，需要返回一个对象，对象中包含我们需要的数据
+				data() {
+					return {
+						title: 'Hello World',
+						number: 0,
+						items: ['星际穿越', '盗梦空间', '大话西游']
+					};
+				},
+				// methods中用于定义方法
+				methods: {
+					increment() {
+						this.number++;
+					},
+					decrement() {
+						this.number == 0 ? (this.number = 0) : this.number--;
+					}
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 普通的HTML -->
+		<h2>哈喽</h2>
+
+		<!-- Vue应用挂载的地方 -->
+		<div id="app"></div>
+
+		<!-- CDN引入Vue -->
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			// 当我们通过CDN引入Vue的时候，全局就会有一个Vue对象
+			// 我们可以调用Vue对象中的createApp方法来创建一个Vue应用，这个方法返回一个Vue应用的实例，这个实例也是一个对象，我们可以通过这个实例来操作Vue应用，比如挂载，卸载等。
+			const app = Vue.createApp({
+				template: `
+					<h1>hello world</h1>
+					<p>你好呀</p>
+				`
+			});
+
+			// 挂载
+			app.mount('#app');
+		</script>
+	</body>
+</html>
