@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 当使用v-once指令时，当前元素及其子孙元素中的插值语法都只会渲染一次，当数据被改变时，不会重新渲染 -->
+			<h2 v-once>
+				{{ message }}
+				<span>{{number}}</span>
+			</h2>
+
+			<!-- 点击改变数据 -->
+			<button @click="changeMessage">修改message</button>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			let { createApp } = Vue;
+			createApp({
+				data() {
+					return {
+						message: 'Hello Vue!',
+						number: 100
+					};
+				},
+				methods: {
+					changeMessage() {
+						this.message = 'Hello World!';
+						this.number = 200;
+					}
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
