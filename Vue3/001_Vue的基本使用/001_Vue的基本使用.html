@@ -10,21 +10,34 @@
 		<h2>哈喽</h2>
 
 		<!-- Vue应用挂载的地方 -->
-		<div id="app"></div>
+		<div id="app">
+			<h1>hello world</h1>
+			<p>你好呀</p>
+		</div>
 
 		<!-- CDN引入Vue -->
 		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
 		<script>
-			// 当我们通过CDN引入Vue的时候，全局就会有一个Vue对象
-			// 我们可以调用Vue对象中的createApp方法来创建一个Vue应用，这个方法返回一个Vue应用的实例，这个实例也是一个对象，我们可以通过这个实例来操作Vue应用，比如挂载，卸载等。
+			// 当我们通过CDN引入Vue的时候，全局就会有一个Vue对象。
+			// 我们可以调用Vue对象中的createApp方法来创建一个Vue应用，这个方法返回一个Vue应用的实例。
+			// 这个实例也是一个对象，我们可以通过这个实例来操作Vue应用，比如挂载，卸载等。
+			// 创建app
 			const app = Vue.createApp({
+				/*
+				template选项：
+				1.template选项用于定义模板字符串，模板字符串会被渲染成真实的DOM结构，然后替换掉挂载元素中的内容。
+				2.如果以#开头，会被当成queryselector选择器，并使用所选中元素的innerHTML作为模板字符串（配合<template>元素使用）。
+				3.最终写法，直接在所挂载元素中书写模板，因为如果根组件中不包含template和render选项，Vue就会使用所挂载元素的innerHTML来作为模板。
+				*/
+				/*
 				template: `
 					<h1>hello world</h1>
 					<p>你好呀</p>
 				`
+				 */
 			});
 
-			// 挂载
+			// 挂载app
 			app.mount('#app');
 		</script>
 	</body>

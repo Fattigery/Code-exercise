@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{message}}</h2>
+			<ul>
+				<li v-for="item in items">{{item}}</li>
+			</ul>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			// Vue.createApp({}).mount('#app');
+
+			let { createApp, ref, reactive } = Vue;
+
+			createApp({
+				setup() {
+					let message = ref('Hello World!');
+					let items = ref(['大话西游', '三国演义', '水浒传']);
+
+					return {
+						message,
+						items
+					};
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
