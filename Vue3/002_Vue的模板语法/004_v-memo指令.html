@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 表示只有当name的值被改变时，这个元素及其子元素才会重新渲染 -->
+			<div v-memo="[name]">
+				<h4>{{name}}</h4>
+				<h4>{{age}}</h4>
+				<h4>{{sex}}</h4>
+			</div>
+
+			<button @click="changeInfo">修改信息</button>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			let { createApp } = Vue;
+			createApp({
+				data() {
+					return {
+						name: '张三',
+						age: 18,
+						sex: '男'
+					};
+				},
+				methods: {
+					changeInfo() {
+						// 只修改age，不会重新渲染
+						this.age = 24;
+						// 当name的值被改变时，才会重新渲染
+						this.name = '李四';
+					}
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
