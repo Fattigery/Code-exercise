@@ -2,6 +2,9 @@
 @import url(./mixins.less);
 
 .home {
+	// 解决底部tabbar遮挡内容问题
+	padding-bottom: 60px;
+
 	// 打开APP
 	.download {
 		// 在750px的设计稿中，16vw = 120px，转成375px的设计稿时，16vw = 60px
@@ -68,6 +71,10 @@
 		padding: 4vw;
 		box-sizing: border-box;
 		background-color: white;
+
+		position: sticky;
+		top: 0;
+		z-index: 10;
 
 		.left {
 			flex: 1;
@@ -219,6 +226,102 @@
 						color: #ccc;
 						font-size: @smallFontSize;
 						text-decoration: line-through;
+					}
+				}
+			}
+		}
+	}
+
+	// 分类
+	.category {
+		display: flex;
+		margin: 5.333333vw 0 2.666667vw;
+		padding: 0 3.2vw;
+
+		.item {
+			flex: 1;
+			text-align: center;
+
+			.title {
+				font-size: @bigFontSize;
+				color: #666;
+			}
+
+			.subtitle {
+				font-size: @smallFontSize;
+				color: #999;
+			}
+		}
+
+		.active {
+			.title {
+				color: @mainColor;
+			}
+			.subtitle {
+				color: white;
+				background-color: @mainColor;
+				border-radius: 2.666667vw;
+			}
+		}
+	}
+
+	// 商品
+	.product {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		.item {
+			width: 46.666667vw;
+			margin-bottom: 1.6vw;
+			border-radius: 1.333333vw;
+			overflow: hidden;
+			background-color: white;
+			color: #666;
+
+			&:nth-child(2n) {
+				margin-left: 1.6vw;
+			}
+
+			.album {
+				img {
+					width: 100%;
+				}
+			}
+
+			.info {
+				padding: 2.666667vw;
+
+				.company {
+					background: url('../img/company_01.png') no-repeat left center/4vw 4vw;
+					text-indent: 4.8vw;
+				}
+
+				.desc {
+					background: url('../img/desc.png') no-repeat left 1.066667vw/6.933333vw 3.466667vw;
+					text-indent: 7.466667vw;
+					margin-top: 1.333333vw;
+
+					// 多行文本溢出显示省略号
+					/* 超出部分隐藏 */
+					overflow: hidden;
+					/* 超出部分显示省略号 */
+					text-overflow: ellipsis;
+					/* 使对象作为弹性盒子模型显示 */
+					display: -webkit-box;
+					/* 块容器中的内容限制为指定的行数 */
+					-webkit-line-clamp: 2;
+					/* 弹性盒子对象中的子元素排列方式为竖排 */
+					-webkit-box-orient: vertical;
+				}
+
+				// tags：common.less
+
+				.price {
+					color: @mainColor;
+					font-size: @smallFontSize;
+					span {
+						font-size: @bigFontSize;
 					}
 				}
 			}

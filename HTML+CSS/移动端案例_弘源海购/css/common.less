@@ -1,6 +1,31 @@
+// 公共的CSS样式
 @import url(./variables.less);
 
 body {
 	font-size: @normalFontSize;
 	background-color: #f5f5f5;
+}
+
+// tage tag
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1.333333vw 0 0;
+
+	.tag {
+		font-size: @smallFontSize;
+		color: @mainColor;
+		border: 1px solid @mainColor;
+		padding: 0 0.8vw;
+		border-radius: 0.8vw;
+		margin: 0 0.8vw 0.8vw 0;
+
+		// 如果有券
+		&.ticket::before {
+			content: '券';
+			background-color: @lightBgColor;
+			padding: 0 0.533333vw;
+			margin-right: 0.533333vw;
+		}
+	}
 }
