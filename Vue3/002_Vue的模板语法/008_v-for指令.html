@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 在使用v-for的时候，一定要绑定key属性，并且key属性的值要具有唯一性 -->
+			<!-- 基本使用：遍历数组 -->
+			<h2>students</h2>
+			<ul>
+				<li v-for="(item,index) in students" :key="item.id">{{index+1}} - {{item.name}}</li>
+			</ul>
+
+			<h2>products</h2>
+			<div v-for="(item,index) in products" :key="item.id">
+				<h4>{{item.name}}</h4>
+				<span>价格：{{item.price}}</span>
+				<p>秒杀：{{item.desc}}</p>
+			</div>
+
+			<!-- 基本使用：遍历对象 -->
+			<h2>info</h2>
+			<ul>
+				<li v-for="(value,key,index) in info" :key="index">{{key}} - {{value}}</li>
+			</ul>
+
+			<!-- 更新数组 -->
+			<ul>
+				<li v-for="item in arr">{{item}}</li>
+			</ul>
+			<button @click="addArr">点击</button>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			let { createApp } = Vue;
+			createApp({
+				data() {
+					return {
+						students: [
+							{ id: 1, name: '张三' },
+							{ id: 2, name: '李四' },
+							{ id: 3, name: '王二' },
+							{ id: 4, name: '狗蛋' }
+						],
+						products: [
+							{ id: 110, name: '苹果', price: 10, desc: '9.9秒杀，快来抢购！' },
+							{ id: 111, name: '香蕉', price: 20, desc: '9.9秒杀，快来抢购！' },
+							{ id: 112, name: '橘子', price: 30, desc: '9.9秒杀，快来抢购！' }
+						],
+						info: {
+							name: '张三',
+							age: 18,
+							height: 1.88
+						},
+						arr: ['张三', '李四', '王二', '狗蛋']
+					};
+				},
+				methods: {
+					addArr() {
+						// 直接赋值一个新数组
+						this.arr = this.arr.map(item => '姓名：' + item);
+					}
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
