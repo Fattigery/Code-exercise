@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 复杂数据的不同处理： -->
+			<!-- 1.在插值语法中处理数据 -->
+			<h4>姓名：{{firstName+lastName}}</h4>
+			<h4>{{message.split(" ").reverse().join(" ")}}</h4>
+
+			<!-- 2.在methods中处理数据 -->
+			<h4>姓名：{{returnName()}}</h4>
+			<h4>{{returnReverseMessage()}}</h4>
+
+			<!-- 3.在computed中处理数据 -->
+			<h4>姓名：{{calcName}}</h4>
+			<h4>{{reverseMessage}}</h4>
+
+			<!-- ------------------------------------------------------- -->
+
+			<!-- computed和methods的区别 -->
+			<!-- computed是有缓存的，只有当依赖的数据源发生变化的时候，才会重新求值 -->
+			<h4>{{calcName}}</h4>
+			<h4>{{calcName}}</h4>
+			<h4>{{calcName}}</h4>
+			<h4>{{returnName()}}</h4>
+			<h4>{{returnName()}}</h4>
+			<h4>{{returnName()}}</h4>
+
+			<!-- ------------------------------------------------------- -->
+
+			<!-- 计算属性的getter和setter（几乎用不到setter） -->
+			<h4>{{fullName}}</h4>
+			<button @click="changeName">修改Name</button>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			let { createApp } = Vue;
+			createApp({
+				data() {
+					return {
+						firstName: '张',
+						lastName: '三',
+						message: 'my name is zhangsan'
+					};
+				},
+				methods: {
+					returnName() {
+						console.log('执行了returnName方法');
+						return this.firstName + this.lastName;
+					},
+					returnReverseMessage() {
+						return this.message.split(' ').reverse().join(' ');
+					},
+					changeName() {
+						this.fullName = '李四';
+					}
+				},
+				computed: {
+					calcName() {
+						console.log('执行了calcName方法');
+						return this.firstName + this.lastName;
+					},
+					reverseMessage() {
+						return this.message.split(' ').reverse().join(' ');
+					},
+					fullName: {
+						get() {
+							return this.firstName + this.lastName;
+						},
+						set(value) {
+							let arr = value.split('');
+							this.firstName = arr[0];
+							this.lastName = arr[1];
+						}
+					}
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
