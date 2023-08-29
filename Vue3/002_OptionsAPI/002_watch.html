@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<h4>{{ info }}</h4>
+			<h4>{{ message }}</h4>
+			<button @click="changeInfo">修改info</button>
+			<button @click="changeMessage">修改message</button>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			let { createApp, toRaw } = Vue;
+			createApp({
+				data() {
+					return {
+						message: 'hello Vue3',
+						info: {
+							name: 'why',
+							age: 18
+						}
+					};
+				},
+				methods: {
+					changeInfo() {
+						// 修改对象中某个属性的值，这种情况下，方法类型的侦听器是监听不到的
+						this.info.name = 'kobe';
+					},
+					changeMessage() {
+						this.message = '你好啊，Vue3';
+					}
+				},
+				watch: {
+					// 方法格式的侦听器（使用的是默认配置，不能立即执行一次，不能深度监听）
+					// info(newValue, oldValue) {
+					// 	console.log('info发生了变化');
+					// 	console.log(newValue, oldValue);
+
+					// 如果data中的数据是对象类型，那么拿到的就是Proxy代理对象，如果想要拿到原始对象，可以使用toRaw方法
+					// console.log(toRaw(newValue));
+					// 也可以使用...运算符展开对象
+					// console.log({ ...newValue });
+					// }
+
+					// 对象类型的侦听器（可以配置）
+					info: {
+						handler(newValue, oldValue) {
+							console.log('info发生了变化');
+							console.log(newValue, oldValue);
+						},
+						// 深度监听
+						deep: true,
+						// 进入页面立即执行一次
+						immediate: true
+					},
+
+					// 对对象中的某个属性进行监听
+					'info.name': {
+						handler(newValue, oldValue) {
+							console.log('info.name发生了变化');
+							console.log(newValue, oldValue);
+						},
+						immediate: true
+					}
+				},
+				created() {
+					// 在created生命周期回调函数中，使用$watch方法，也可以监听数据的变化
+					this.$watch(
+						'message',
+						(newValue, oldValue) => {
+							console.log('message发生了变化');
+							console.log(newValue, oldValue);
+						},
+						{ immediate: true }
+					);
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
