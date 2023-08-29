@@ -9,6 +9,7 @@
 				margin: 0;
 				padding: 20px;
 			}
+
 			table {
 				border-collapse: collapse;
 			}
@@ -30,6 +31,10 @@
 			table tbody td:nth-of-type(5) span {
 				padding: 0 3px;
 			}
+
+			.active {
+				background-color: #eee;
+			}
 		</style>
 	</head>
 	<body>
@@ -47,7 +52,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="(item,index) in books" :key="item.id">
+						<tr
+							v-for="(item,index) in books"
+							:key="item.id"
+							@click="changeCurrentId(item.id,$event)"
+							:class="{active:currentId===item.id}">
 							<td>{{item.id}}</td>
 							<td>{{item.name}}</td>
 							<td>{{item.date}}</td>
@@ -80,7 +89,8 @@
 							{ id: 2, name: '《UNIX编程艺术》', date: '2006-2', price: 59.0, count: 1 },
 							{ id: 3, name: '《编程珠玑》', date: '2008-10', price: 39.0, count: 1 },
 							{ id: 4, name: '《代码大全》', date: '2006-3', price: 128.0, count: 1 }
-						]
+						],
+						currentId: 0
 					};
 				},
 				methods: {
@@ -92,6 +102,11 @@
 					},
 					removeItem(index) {
 						this.books.splice(index, 1);
+					},
+					changeCurrentId(id, e) {
+						if (e.target.textContent !== '移除') {
+							this.currentId = id;
+						}
 					}
 				},
 				computed: {
