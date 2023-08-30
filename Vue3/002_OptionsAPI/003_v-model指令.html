@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-model的原理 -->
+			<!-- <input type="text" :value="message" @input="message=$event.target.value" /> -->
+
+			<!-- v-model的基本使用 -->
+			<input type="text" v-model="message" />
+			<h4>{{ message }}</h4>
+
+			<!-- -------------------------------------------------------------------------- -->
+
+			<!-- v-model绑定textarea -->
+			<textarea v-model="text" cols="50" rows="10"></textarea>
+			<h4>{{ text }}</h4>
+
+			<!-- -------------------------------------------------------------------------- -->
+
+			<!-- 绑定checkbox（单个，绑定到属性中的值是一个布尔值，value属性的值并不影响v-model绑定的属性的值） -->
+			<label for="agree"><input id="agree" type="checkbox" v-model="isAgree" />同意协议</label>
+			<h4>{{ checked }}</h4>
+			<!--
+        绑定checkbox（多个，绑定到属性中的值是一个数组）
+        注意：多个复选框时，每个复选框都必须有value属性，被选中的复选框的value值会被加入到数组中
+      -->
+			<div class="hobbies">
+				<h2>请选择你的爱好：</h2>
+				<label for="sing"><input type="checkbox" id="sing" value="sing" v-model="hobbies" />唱</label>
+				<label for="jump"><input type="checkbox" id="jump" value="jump" v-model="hobbies" />跳</label>
+				<label for="rap"><input type="checkbox" id="rap" value="rap" v-model="hobbies" />rap</label>
+				<h4>爱好：{{ hobbies }}</h4>
+			</div>
+
+			<!-- -------------------------------------------------------------------------- -->
+
+			<!--
+        v-model绑定radio
+        在不设置name属性的情况下，v-model绑定的属性一样也是互斥的
+       -->
+			<div>
+				<label for="male"><input id="male" type="radio" value="男" v-model="sex" />男</label>
+				<label for="female"><input id="female" type="radio" value="女" v-model="sex" />女</label>
+				<h4>性别：{{sex}}</h4>
+			</div>
+
+			<!-- -------------------------------------------------------------------------- -->
+
+			<!--
+        v-model绑定select
+        默认情况下，绑定到属性中的是单个值
+        如果设置了multiple属性，绑定到属性中的就是个数组了
+       -->
+			<select v-model="fruits" multiple>
+				<option value="apple">苹果</option>
+				<option value="orange">橘子</option>
+				<option value="banana">香蕉</option>
+			</select>
+			<h4>水果：{{fruits}}</h4>
+
+			<!-- -------------------------------------------------------------------------- -->
+
+			<!-- v-model的值绑定（其实就是通过v-for将服务器请求下来的数据渲染到页面） -->
+			<select v-model="fruits">
+				<option v-for="item in fruitsArr" :value="item.value">{{item.text}}</option>
+			</select>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			let { createApp } = Vue;
+			createApp({
+				data() {
+					return {
+						message: 'Hello Vue!',
+						text: 'Hello Vue!',
+						isAgree: false,
+						hobbies: [],
+						sex: '女',
+						fruits: '',
+						fruitsArr: [
+							{ value: 'apple', text: '苹果' },
+							{ value: 'orange', text: '橘子' },
+							{ value: 'banana', text: '香蕉' }
+						]
+					};
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
