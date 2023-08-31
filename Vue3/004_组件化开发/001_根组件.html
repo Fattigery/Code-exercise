@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{ message }}</h2>
+		</div>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			let { createApp } = Vue;
+			// 组件化开发让我们可以开发出一个个独立可复用的小组件来组装我们的Vue项目，每个Vue项目最终都是一颗组件树
+			// 我们给createApp函数传入的对象，其实就是一个组件，我们称为App组件，也是我们Vue应用程序的根组件
+			// createApp({
+			// 	data() {
+			// 		return {
+			// 			message: 'Hello Vue!'
+			// 		};
+			// 	}
+			// }).mount('#app');
+
+			// 组件：App组件（根组件）
+			const App = {
+				name: 'App',
+				data() {
+					return {
+						message: 'Hello Vue!'
+					};
+				}
+			};
+			createApp(App).mount('#app');
+		</script>
+	</body>
+</html>

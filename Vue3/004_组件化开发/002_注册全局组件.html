@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{ message }}</h2>
+
+			<!-- 使用product全局组件 -->
+			<product></product>
+			<product></product>
+		</div>
+
+		<!-- product组件的模板 -->
+		<template id="product">
+			<h4>{{title}}</h4>
+			<p>{{message}}</p>
+		</template>
+
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+		<script>
+			/*
+        注册全局组件：
+          1.通过app.component(组件名称,组件对象)注册一个全局对象（在.vue文件中，就是在main.js入口文件中注册）。
+          2.在app组件模板中使用全局组件。
+      */
+			let { createApp } = Vue;
+
+			// App根组件
+			const App = {
+				data() {
+					return {
+						message: 'Hello App'
+					};
+				}
+			};
+
+			// project组件（一个对象就是一个组件，在.vue文件中，就是每个组件默认导出的对象了）
+			const product = {
+				template: '#product',
+				data() {
+					return {
+						title: '我是product组件',
+						message: 'Hello product'
+					};
+				}
+			};
+
+			const app = createApp(App);
+			// 注册全局组件
+			app.component('product', product);
+			app.mount('#app');
+		</script>
+	</body>
+</html>

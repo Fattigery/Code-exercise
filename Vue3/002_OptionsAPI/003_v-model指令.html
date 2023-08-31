@@ -24,7 +24,7 @@
 
 			<!-- 绑定checkbox（单个，绑定到属性中的值是一个布尔值，value属性的值并不影响v-model绑定的属性的值） -->
 			<label for="agree"><input id="agree" type="checkbox" v-model="isAgree" />同意协议</label>
-			<h4>{{ checked }}</h4>
+			<h4>{{ isAgree }}</h4>
 			<!--
         绑定checkbox（多个，绑定到属性中的值是一个数组）
         注意：多个复选框时，每个复选框都必须有value属性，被选中的复选框的value值会被加入到数组中
@@ -69,6 +69,32 @@
 			<select v-model="fruits">
 				<option v-for="item in fruitsArr" :value="item.value">{{item.text}}</option>
 			</select>
+
+			<!-- -------------------------------------------------------------------------- -->
+
+			<!-- v-model的修饰符 -->
+			<!-- .lazy：在输入框失去焦点或者按下回车键时才更新数据 -->
+			<div><input type="text" v-model.lazy="message" /></div>
+			<h4>{{ message }}</h4>
+
+			<!--
+				.number：将输入的内容转换为数值类型（只能输入数字，本质是利用parseFloat来转换字符串为数字）
+				注意：如果type=number，那么number修饰符会自动开启，所以，如果只需要输入数字的话，可以直接将type设置为number，并且输入框中无法输入非数字字符（推荐使用）
+			 -->
+			<div>
+				<input type="text" v-model.number="counter" />
+				<input type="number" v-model="counter2" />
+			</div>
+			<h4>{{ counter }} - {{typeof counter}}</h4>
+			<h4>{{ counter2 }} - {{typeof counter2}}</h4>
+
+			<!-- .trim：去除首尾空格 -->
+			<div><input type="text" v-model.trim="message" /></div>
+			<h4>{{ message }}</h4>
+
+			<!-- 同时使用多个修饰符 -->
+			<div><input type="text" v-model.lazy.trim="message" /></div>
+			<h4>{{ message }}</h4>
 		</div>
 
 		<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
@@ -83,6 +109,8 @@
 						hobbies: [],
 						sex: '女',
 						fruits: '',
+						counter: 0,
+						counter2: 0,
 						fruitsArr: [
 							{ value: 'apple', text: '苹果' },
 							{ value: 'orange', text: '橘子' },
