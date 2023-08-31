@@ -24,7 +24,7 @@
 		<script>
 			/*
         注册全局组件：
-          1.通过app.component(组件名称,组件对象)注册一个全局对象（在.vue文件中，就是在main.js入口文件中注册）。
+          1.通过app.component(组件名称,组件对象)注册一个全局对象（在脚手架项目中，是在main.js入口文件中注册）。
           2.在app组件模板中使用全局组件。
       */
 			let { createApp } = Vue;
@@ -38,7 +38,7 @@
 				}
 			};
 
-			// project组件（一个对象就是一个组件，在.vue文件中，就是每个组件默认导出的对象了）
+			// project组件（一个对象就是一个组件，在.vue文件中，就是每个组件导出的对象了）
 			const product = {
 				template: '#product',
 				data() {
