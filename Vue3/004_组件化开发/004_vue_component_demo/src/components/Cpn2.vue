@@ -3,6 +3,7 @@
 </template>
 
 <script>
+	// 导出组件对象
 	export default {
 		name: 'Cpn2',
 		data() {

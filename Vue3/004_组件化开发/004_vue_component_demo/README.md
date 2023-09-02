@@ -1,19 +1,19 @@
-# vue_demo
+# vue_component_demo
 
-## Project setup
+## 安装依赖
+
 ```
 pnpm install
 ```
 
-### Compiles and hot-reloads for development
+### 项目运行
+
 ```
 pnpm run serve
 ```
 
-### Compiles and minifies for production
+### 项目打包
+
 ```
 pnpm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
