@@ -1,6 +1,6 @@
-# vue 组件之间的通信
+# vue_component
 
-## 安装项目依赖
+## 安装依赖
 
 ```
 pnpm install

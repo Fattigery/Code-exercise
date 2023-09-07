@@ -14,7 +14,7 @@
 <script>
 	export default {
 		name: 'TabControl',
-		emits: ['tabItemClick'],
+		emits: ['tab-item-click'],
 		props: {
 			titles: {
 				type: Array,

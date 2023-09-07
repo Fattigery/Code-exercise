@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 
 // 导入App.vue导出的组件对象
-import App from './App.vue';
+import App from './/App.vue';
 
 // 导入组件导出的组件对象
 import Product1 from './components/Product1.vue';
