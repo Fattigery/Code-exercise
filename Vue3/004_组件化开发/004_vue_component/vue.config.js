@@ -11,7 +11,13 @@ module.exports = defineConfig({
 			// entry: 'src/004_组件通信_案例练习/main.js'
 			// entry: 'src/005_组件插槽_基本使用/main.js'
 			// entry: 'src/006_组件插槽_具名插槽/main.js'
-			entry: 'src/007_组件插槽_作用域插槽/main.js'
+			// entry: 'src/007_组件插槽_作用域插槽/main.js'
+			// entry: 'src/008_非父子组件之间通信_provide和inject/main.js'
+			// entry: 'src/009_任意组件之间通信_Mitt库/main.js'
+			// entry: 'src/010_生命周期函数（选项）/main.js'
+			// entry: 'src/011_ref获取元素或组件的引用/main.js'
+			// entry: 'src/012_动态组件component/main.js'
+			entry: 'src/013_keep-alive的使用/main.js'
 		}
 	}
 });
