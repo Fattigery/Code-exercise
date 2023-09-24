@@ -17,7 +17,9 @@ module.exports = defineConfig({
 			// entry: 'src/010_生命周期函数（选项）/main.js'
 			// entry: 'src/011_ref获取元素或组件的引用/main.js'
 			// entry: 'src/012_动态组件component/main.js'
-			entry: 'src/013_keep-alive的使用/main.js'
+			// entry: 'src/013_keep-alive的使用/main.js'
+			// entry: 'src/014_异步组件（分包处理）/main.js'
+			entry: 'src/015_组件的v-model/main.js'
 		}
 	}
 });
