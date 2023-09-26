@@ -1,4 +1,10 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
 module.exports = defineConfig({
-  transpileDependencies: true
-})
+	transpileDependencies: true,
+	pages: {
+		index: {
+			// entry: 'sec/001_setup的基本使用/main.js'
+			entry: 'src/002_setup的参数/main.js'
+		}
+	}
+});
