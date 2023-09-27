@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="home">
 		<h4>Home：{{ name }} - {{ age }}</h4>
 	</div>
 </template>
@@ -34,7 +34,7 @@
 			let num2 = ref(20);
 
 			// 有选择的暴漏一些内容
-			expose({ count: num1 });
+			expose({ num1 });
 		}
 	};
 </script>
