@@ -1,0 +1,11 @@
+body,
+h1,
+h2,
+h3 {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'PingFang SC,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,Microsoft YaHei,微软雅黑,STHeitiSC-Light,sans-serif';
+}

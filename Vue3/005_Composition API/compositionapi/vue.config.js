@@ -12,7 +12,8 @@ module.exports = defineConfig({
 			// entry: 'src/007_setup中获取ref引用元素/main.js'
 			// entry: 'src/008_setup中侦听数据的变化/main.js'
 			// entry: 'src/009_setup中Hooks练习/main.js'
-			entry: 'src/010_script-setup语法/main.js'
+			// entry: 'src/010_script-setup语法/main.js'
+			entry: 'src/011_阶段案例练习（好评房源）/main.js'
 		}
 	}
 });

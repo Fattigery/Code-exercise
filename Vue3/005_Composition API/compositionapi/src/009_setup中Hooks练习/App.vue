@@ -16,8 +16,9 @@
 		</div>
 
 		<!-- 获取页面滚动位置 -->
-		<div class="scroll" style="height: 2200px"></div>
-		<button @click="getPosition" style="position: fixed; right: 0; bottom: 100px">获取页面滚动位置</button>
+		<h4>X：{{ scrollPosition.x }}</h4>
+		<h4>Y：{{ scrollPosition.y }}</h4>
+		<div class="scroll" style="width: 3000px; height: 2200px"></div>
 	</div>
 </template>
 
@@ -36,10 +37,7 @@
 				title.value = '首页 - 推荐';
 			}
 
-			function getPosition() {
-				let { scrollX, scrollY } = useScrollPosition();
-				console.log(scrollX.value, scrollY.value);
-			}
+			let scrollPosition = useScrollPosition();
 
 			return {
 				// counter,
@@ -48,7 +46,7 @@
 				...useCounter(12),
 				title,
 				changeTitle,
-				getPosition
+				scrollPosition
 			};
 		}
 	};
