@@ -9,7 +9,7 @@
 	import RoomArea from './components/RoomArea.vue';
 
 	// 1.获取数据
-	// JSON文件可以直接import导入，为什么呢？
+	// JSON文件可以直接import导入
 	// import highScore from './data/high_score.json';
 	// console.log(highScore);
 
