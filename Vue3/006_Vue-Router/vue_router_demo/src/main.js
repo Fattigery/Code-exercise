@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
+import '../public/css/reset.css';
+
 // 导入路由实例
 import router from './router/index.js';
 
