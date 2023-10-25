@@ -10,16 +10,16 @@
 		<p>body元素的内容</p>
 
 		<!--
-      有两种情况会显示noscript元素中的内容：
+      下面两种情况会显示noscript元素中的内容：
       1. 浏览器不支持JavaScript
       2. 浏览器支持JavaScript，但是JavaScript被用户禁用
      -->
 		<noscript>
-			<h1>如果浏览器不支持JavaScript，将显示这段文本，否则不会显示。</h1>
+			<h1>您的浏览器不支持JavaScript, 请打开或者更换浏览器~</h1>
 		</noscript>
 
 		<script>
-			alert('Hello World!');
+			console.log('您的浏览器可以运行JavaScript代码');
 		</script>
 	</body>
 </html>

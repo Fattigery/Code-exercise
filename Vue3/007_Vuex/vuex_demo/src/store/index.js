@@ -11,17 +11,6 @@ const store = createStore({
 			{ id: 333, name: '王五', age: 25 }
 		]
 	}),
-	mutations: {
-		increment(state) {
-			state.counter++;
-		},
-		decrement(state) {
-			state.counter--;
-		},
-		changeAge(state, payload) {
-			state.age = payload;
-		}
-	},
 	getters: {
 		doubleCounter(state) {
 			return state.counter * 2;
@@ -32,15 +21,26 @@ const store = createStore({
 				return preValue + item.age;
 			}, 0);
 		},
-		// getter的第二个参数是getters对象本身，用于引用getter对象中的其他getter
+		// getter的第二个参数就是getters对象本身，用于引用getter对象中的其他getter
 		message(state, getters) {
 			return `counter:${state.counter}，age:${state.age}，totalAge:${getters.totalAge}`;
 		},
-		// getters可以返回一个函数，我们调用这个函数可以传递参数 - 根据id获取某一个friend
+		// getters可以返回一个函数，外部可以通过调用这个函数实现给getter传递参数 - 根据id获取某一个friend
 		getFriendById(state) {
 			return function (id) {
 				return state.friends.find(item => item.id === id);
 			};
+		}
+	},
+	mutations: {
+		increment(state) {
+			state.counter++;
+		},
+		decrement(state) {
+			state.counter--;
+		},
+		changeAge(state, payload) {
+			state.age = payload;
 		}
 	}
 });

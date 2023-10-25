@@ -14,7 +14,7 @@
 
 	const store = useStore();
 
-	// 通过 toRefs 将 store.state 中的数据解构出来依然具有响应式
+	// 在setup中推荐通过toRefs将store.state中的数据解构出来，这样数据依然具有响应式
 	let { counter, age } = toRefs(store.state);
 
 	function increment() {

@@ -1,13 +1,33 @@
 <template>
 	<div class="app">
-		<!-- <Store></Store> -->
-		<Getters></Getters>
+		<nav>
+			<router-link to="/state">State</router-link>
+			<router-link to="/map-state">MapState</router-link>
+			<router-link to="/getters">Getters</router-link>
+			<router-link to="/map-getters">MapGetters</router-link>
+		</nav>
+		<router-view></router-view>
 	</div>
 </template>
 
-<script setup>
-	// import Store from './components/001_Store的基本使用.vue';
-	import Getters from './components/002_Getters的基本使用.vue';
-</script>
+<script setup></script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+	.app {
+		nav {
+			display: flex;
+			a {
+				margin-right: 10px;
+				padding: 5px 10px;
+				border: 1px solid #000;
+				border-radius: 999px;
+			}
+
+			a.link-active {
+				background-color: tomato;
+				border: 1px solid transparent;
+				color: white;
+			}
+		}
+	}
+</style>

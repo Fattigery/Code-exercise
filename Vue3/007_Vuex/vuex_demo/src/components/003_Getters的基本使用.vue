@@ -12,9 +12,11 @@
 
 		<hr />
 
-		<!-- setup中获取getters数据，方便的形式 -->
+		<!-- setup中获取getters数据 -->
+		<!-- 使用computed函数 -->
 		<h4>message：{{ message }}</h4>
-		<h4>message2：{{ message2 }}</h4>
+		<!-- toRefs解构出的数据 -->
+		<h4>totalAge：{{ totalAge }}</h4>
 	</div>
 </template>
 
@@ -24,17 +26,17 @@
 
 	const store = useStore();
 
-	// 1.在setup中使用mapGetters
-	const { message: messageFn } = mapGetters(['message']);
-	const message = computed(messageFn.bind({ $store: store }));
+	// 1.在setup中使用mapGetters（不推荐）
+	// const { message: messageFn } = mapGetters(['message']);
+	// const message = computed(messageFn.bind({ $store: store }));
 
-	// 2.使用toRefs对store.getters中的数据进行解构，解构出来的数据依然具有响应式
+	// 2.使用computed计算属性（推荐）
+	const message = computed(() => store.getters.message);
+
+	// 3.使用toRefs对store.getters中的数据进行解构，解构出来的数据依然具有响应式
 	// let { totalAge } = toRefs(store.getters);
 	// toRefs期望传入的是一个响应式对象，但是store.getters不是响应式对象，所以可以使用reactive将其转换为响应式对象
 	let { totalAge } = toRefs(reactive(store.getters));
-
-	// 3.使用computed计算属性
-	const message2 = computed(() => store.getters.message);
 
 	function changeAge() {
 		store.commit('changeAge', 20);
