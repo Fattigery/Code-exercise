@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import homeModule from './modules/home.js';
 
 const store = createStore({
 	state: () => ({
@@ -41,7 +42,44 @@ const store = createStore({
 		},
 		changeAge(state, payload) {
 			state.age = payload;
+		},
+		changeName(state, payload) {
+			state.name = payload;
 		}
+	},
+	actions: {
+		incrementAction(context) {
+			// 模拟异步操作
+			setTimeout(() => {
+				// 提交mutation
+				context.commit('increment');
+			}, 2000);
+		},
+		changeNameAction(context, payload) {
+			// 模拟异步操作
+			setTimeout(() => {
+				// 提交mutation并携带参数
+				context.commit('changeName', payload);
+			}, 2000);
+		},
+		async fetchHomeMultidataAction(context) {
+			// 使用promise
+			// fetch('http://123.207.32.32:8000/home/multidata')
+			// 	.then(res => {
+			// 		return res.json();
+			// 	})
+			// 	.then(data => {
+			// 		console.log(data);
+			// 	});
+
+			// 使用async/await
+			let res = await fetch('http://123.207.32.32:8000/home/multidata');
+			let data = await res.json();
+			console.log(data);
+		}
+	},
+	modules: {
+		home: homeModule
 	}
 });
 

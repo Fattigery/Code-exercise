@@ -30,7 +30,7 @@
 	// const { message: messageFn } = mapGetters(['message']);
 	// const message = computed(messageFn.bind({ $store: store }));
 
-	// 2.使用computed计算属性（推荐）
+	// 2.使用computed（推荐）
 	const message = computed(() => store.getters.message);
 
 	// 3.使用toRefs对store.getters中的数据进行解构，解构出来的数据依然具有响应式

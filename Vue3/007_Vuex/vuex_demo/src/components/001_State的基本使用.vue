@@ -3,6 +3,7 @@
 		<!-- <h4>当前计数：{{ $store.state.counter }}</h4> -->
 		<h4>当前计数：{{ counter }}</h4>
 		<h4>当前年龄：{{ age }}</h4>
+
 		<button @click="increment">+1</button>
 		<button @click="decrement">-1</button>
 	</div>
