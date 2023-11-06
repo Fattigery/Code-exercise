@@ -20,18 +20,58 @@
 	.app {
 		nav {
 			display: flex;
+
 			a {
-				margin-right: 10px;
-				padding: 5px 10px;
-				border: 1px solid #000;
-				border-radius: 999px;
+				position: relative;
+				padding: 10px 0;
+				margin: 0 10px;
 			}
 
-			a.link-active {
-				background-color: tomato;
-				border: 1px solid transparent;
-				color: white;
+			a::before {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				height: 2px;
+				background-color: #3271ae;
+				transform-origin: bottom right;
+				transform: scaleX(0);
+				transition: transform 0.3s ease-in;
 			}
+
+			a:not(a.link-active):hover::before {
+				transform-origin: bottom left;
+				transform: scaleX(1);
+			}
+
+			a.link-active::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 2px;
+				background-color: #c12c1f;
+				animation: line 1s;
+			}
+		}
+
+		// 线条动画
+		@keyframes line {
+			0% {
+				transform: translateX(-10%);
+				opacity: 0;
+			}
+			100% {
+				transform: translateX(0);
+				opacity: 1;
+			}
+		}
+
+		.router-link-active {
+			/*background-color: #4c8045;*/
+			animation: line 1s ease infinite;
 		}
 
 		/deep/button {

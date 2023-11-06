@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 import homeModule from './modules/home.js';
+import userModule from './modules/user.js';
 
 const store = createStore({
 	state: () => ({
@@ -76,10 +77,13 @@ const store = createStore({
 			let res = await fetch('http://123.207.32.32:8000/home/multidata');
 			let data = await res.json();
 			console.log(data);
+			// async函数默认返回一个promise对象
+			return data;
 		}
 	},
 	modules: {
-		home: homeModule
+		home: homeModule,
+		user: userModule
 	}
 });
 
