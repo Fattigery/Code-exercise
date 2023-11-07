@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
+import { computed, ref } from 'vue';
 
-export const useHomeStore = defineStore('home', {
+const Option = {
 	state() {
 		return {
 			counter: 100
@@ -16,4 +17,22 @@ export const useHomeStore = defineStore('home', {
 			this.counter += 1;
 		}
 	}
+};
+
+export const useHomeStore = defineStore('home', () => {
+	// state
+	const counter = ref(80);
+	// getters
+	const doubleCounter = computed(() => counter.value * 2);
+	// actions
+	function changeCounter() {
+		counter.value += 1;
+	}
+
+	// 返回一个带有我们想暴露出去的属性和方法的对象
+	return {
+		counter,
+		doubleCounter,
+		changeCounter
+	};
 });
