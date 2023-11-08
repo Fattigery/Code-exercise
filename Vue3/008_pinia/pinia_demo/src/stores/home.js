@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 
+// 参数二为Option对象
 const Option = {
 	state() {
 		return {
@@ -19,7 +20,8 @@ const Option = {
 	}
 };
 
-export const useHomeStore = defineStore('home', () => {
+// 参数二为setup函数
+function setup() {
 	// state
 	const counter = ref(80);
 	// getters
@@ -35,4 +37,6 @@ export const useHomeStore = defineStore('home', () => {
 		doubleCounter,
 		changeCounter
 	};
-});
+}
+
+export const useHomeStore = defineStore('home', Option);
