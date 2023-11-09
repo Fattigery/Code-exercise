@@ -1,33 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import axios from 'axios';
-
-// 1.发送request请求
-axios
-	.request({
-		url: 'http://123.207.32.32:8000/home/multidata'
-	})
-	.then(res => {
-		console.log(res.data);
-	});
-
-// 2.发送get请求
-axios.get('http://123.207.32.32:8000/home/multidata').then(res => {
-	console.log(res.data);
-});
-
-// 3.发送post请求
-axios
-	.post('http://123.207.32.32:1888/02_param/postjson', {
-		// request body（请求体）
-		data: {
-			name: 'coderwhy',
-			password: 123456
-		}
-	})
-	.then(res => {
-		console.log(res.data);
-	});
+// learn_axios
+// import './axios/001_axios的基本使用.js';
+// import './axios/002_配置baseURL与发送多个请求.js';
+// import "./axios/003_创建axios实例.js"
 
 createApp(App).mount('#app');
